@@ -40,8 +40,8 @@ export default function Greeting() {
                 <Button text="Contact me" href="#contact" />
                 {greeting.resumeLink && (
                   <a
-                                      href={require("./ZeyadCV_1.pdf")}
-                                      download="ZeyadCV_1.pdf"
+                    href={require("./ZeyadCV_1.pdf")}
+                    download="ZeyadCV_1.pdf"
                     className="download-link-button"
                   >
                     <Button text="Download my resume" />
@@ -50,13 +50,13 @@ export default function Greeting() {
               </div>
             </div>
           </div>
-                  <div className="greeting-image-div">
-                      <img
-                          src={require("../../assets/images/Zeyad.jpg")}
-                          alt="Zeyad Essam"
-                          className="profile-image"
-                      />
-                  </div>
+          <div className="greeting-image-div">
+            <img
+              src={require("../../assets/images/Zeyad.jpg")}
+              alt="Zeyad Essam"
+              className="profile-image"
+            />
+          </div>
         </div>
       </div>
     </Fade>
