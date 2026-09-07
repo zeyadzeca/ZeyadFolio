@@ -63,8 +63,3 @@ Optional GitHub profile fetching uses a local `.env` file. Copy `.env.example` t
 | `npm test` | Runs tests |
 | `npm run deploy` | Builds and publishes to GitHub Pages |
 
-## Deployment
-
-The site is deployed with GitHub Pages. The GitHub Actions workflow in `.github/workflows/deploy.yml` builds the app and publishes the `build` output to the `gh-pages` branch.
-
-The production homepage is `https://zeyadfolio.vercel.app/`.
