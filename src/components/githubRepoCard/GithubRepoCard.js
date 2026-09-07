@@ -4,13 +4,18 @@ import {Fade} from "react-reveal";
 import {formatFileSizeDisplay} from "../../utils";
 
 export default function GithubRepoCard({repo, isDark}) {
+  if (!repo || !repo.node) {
+    return null;
+  }
   function openUrlInNewTab(url, name) {
     if (!url) {
       console.log(`URL in ${name} is undefined`);
       return;
     }
     var win = window.open(url, "_blank");
-    win.focus();
+    if (win) {
+      win.focus();
+    }
   }
 
   return (
@@ -81,7 +86,11 @@ export default function GithubRepoCard({repo, isDark}) {
                     d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74L14 6z"
                   ></path>
                 </svg>
-                <p>{repo.node.stargazers.totalCount}</p>
+                <p>
+                  {repo.node.stargazers
+                    ? repo.node.stargazers.totalCount
+                    : 0}
+                </p>
               </span>
             </div>
             <div className="repo-right-stat">

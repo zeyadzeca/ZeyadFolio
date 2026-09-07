@@ -6,6 +6,9 @@ import emoji from "react-easy-emoji";
 import {Fade} from "react-reveal";
 
 export default function GithubProfileCard({prof}) {
+  if (!prof) {
+    return null;
+  }
   if (isHireable) {
     prof.hireable = "Yes";
   } else {

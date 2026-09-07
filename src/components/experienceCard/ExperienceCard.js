@@ -7,8 +7,14 @@ export default function ExperienceCard({cardInfo, isDark}) {
   const imgRef = createRef();
 
   function getColorArrays() {
-    const colorThief = new ColorThief();
-    setColorArrays(colorThief.getColor(imgRef.current));
+    try {
+      const colorThief = new ColorThief();
+      if (imgRef.current) {
+        setColorArrays(colorThief.getColor(imgRef.current));
+      }
+    } catch (error) {
+      console.warn("Could not extract company logo color", error);
+    }
   }
 
   function rgb(values) {

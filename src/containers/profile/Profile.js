@@ -8,22 +8,33 @@ const GithubProfileCard = lazy(() =>
   import("../../components/githubProfileCard/GithubProfileCard")
 );
 export default function Profile() {
-  const [prof, setrepo] = useState([]);
+  const [prof, setrepo] = useState(null);
   function setProfileFunction(array) {
     setrepo(array);
   }
 
   useEffect(() => {
-    if (openSource.showGithubProfile === "true") {
+    if (
+      openSource.display &&
+      openSource.showGithubProfile === "true"
+    ) {
       const getProfileData = () => {
         fetch("/profile.json")
           .then(result => {
             if (result.ok) {
               return result.json();
             }
+            throw new Error("GitHub profile data is unavailable");
           })
           .then(response => {
-            setProfileFunction(response.data.user);
+            const user =
+              response && response.data && response.data.user
+                ? response.data.user
+                : null;
+            if (!user) {
+              throw new Error("GitHub profile data is invalid");
+            }
+            setProfileFunction(user);
           })
           .catch(function (error) {
             console.error(
@@ -39,6 +50,7 @@ export default function Profile() {
   if (
     openSource.display &&
     openSource.showGithubProfile === "true" &&
+    prof &&
     !(typeof prof === "string" || prof instanceof String)
   ) {
     return (

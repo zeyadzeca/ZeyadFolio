@@ -19,6 +19,7 @@ import SplashScreen from "./splashScreen/SplashScreen";
 import {splashScreen} from "../portfolio";
 import {StyleProvider} from "../contexts/StyleContext";
 import {useLocalStorage} from "../hooks/useLocalStorage";
+import ErrorBoundary from "../components/errorBoundary/ErrorBoundary";
 import "./Main.scss";
 
 const Main = () => {
@@ -28,10 +29,10 @@ const Main = () => {
     useState(true);
 
   useEffect(() => {
-    if (splashScreen.enabled) {
+    if (splashScreen && splashScreen.enabled) {
       const splashTimer = setTimeout(
         () => setIsShowingSplashAnimation(false),
-        splashScreen.duration
+        splashScreen.duration || 2000
       );
       return () => {
         clearTimeout(splashTimer);
@@ -46,25 +47,55 @@ const Main = () => {
   return (
     <div className={isDark ? "dark-mode" : null}>
       <StyleProvider value={{isDark: isDark, changeTheme: changeTheme}}>
-        {isShowingSplashAnimation && splashScreen.enabled ? (
+        {isShowingSplashAnimation && splashScreen && splashScreen.enabled ? (
           <SplashScreen />
         ) : (
           <>
-            <Header />
-            <Greeting />
-            <Skills />
-            <StackProgress />
-            <Education />
-            <WorkExperience />
-            <Projects />
-            <StartupProject />
-            <Achievement />
-            <Blogs />
-            <Talks />
-            <Twitter />
-            <Podcast />
-            <Profile />
-            <Footer />
+            <ErrorBoundary>
+              <Header />
+            </ErrorBoundary>
+            <ErrorBoundary>
+              <Greeting />
+            </ErrorBoundary>
+            <ErrorBoundary>
+              <Skills />
+            </ErrorBoundary>
+            <ErrorBoundary>
+              <StackProgress />
+            </ErrorBoundary>
+            <ErrorBoundary>
+              <Education />
+            </ErrorBoundary>
+            <ErrorBoundary>
+              <WorkExperience />
+            </ErrorBoundary>
+            <ErrorBoundary>
+              <Projects />
+            </ErrorBoundary>
+            <ErrorBoundary>
+              <StartupProject />
+            </ErrorBoundary>
+            <ErrorBoundary>
+              <Achievement />
+            </ErrorBoundary>
+            <ErrorBoundary>
+              <Blogs />
+            </ErrorBoundary>
+            <ErrorBoundary>
+              <Talks />
+            </ErrorBoundary>
+            <ErrorBoundary>
+              <Twitter />
+            </ErrorBoundary>
+            <ErrorBoundary>
+              <Podcast />
+            </ErrorBoundary>
+            <ErrorBoundary>
+              <Profile />
+            </ErrorBoundary>
+            <ErrorBoundary>
+              <Footer />
+            </ErrorBoundary>
             <ScrollToTopButton />
           </>
         )}

@@ -11,6 +11,10 @@ export default class DisplayLottie extends Component {
       animationData: animationData
     };
 
+    if (!animationData) {
+      return <Loading />;
+    }
+
     return (
       <Suspense fallback={<Loading />}>
         <Lottie

@@ -15,6 +15,9 @@ export default function Projects() {
   const {isDark} = useContext(StyleContext);
 
   useEffect(() => {
+    if (!openSource.display) {
+      return;
+    }
     const getRepoData = () => {
       fetch("/profile.json")
         .then(result => {
@@ -24,7 +27,16 @@ export default function Projects() {
           throw result;
         })
         .then(response => {
-          setrepoFunction(response.data.user.pinnedItems.edges);
+          const edges =
+            response &&
+            response.data &&
+            response.data.user &&
+            response.data.user.pinnedItems &&
+            response.data.user.pinnedItems.edges;
+          if (!Array.isArray(edges)) {
+            throw new Error("GitHub repository data is unavailable");
+          }
+          setrepoFunction(edges);
         })
         .catch(function (error) {
           console.error(
@@ -49,10 +61,11 @@ export default function Projects() {
           <h1 className="project-title">Open Source Projects</h1>
           <div className="repo-cards-div-main">
             {repo.map((v, i) => {
-              if (!v) {
+              if (!v || !v.node) {
                 console.error(
                   `Github Object for repository number : ${i} is undefined`
                 );
+                return null;
               }
               return (
                 <GithubRepoCard repo={v} key={v.node.id} isDark={isDark} />

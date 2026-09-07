@@ -1,6 +1,5 @@
-fs = require("fs");
+const fs = require("fs");
 const https = require("https");
-process = require("process");
 require("dotenv").config();
 
 const GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN;
@@ -8,24 +7,43 @@ const GITHUB_USERNAME = process.env.GITHUB_USERNAME;
 const USE_GITHUB_DATA = process.env.USE_GITHUB_DATA;
 const MEDIUM_USERNAME = process.env.MEDIUM_USERNAME;
 
-const ERR = {
-  noUserName:
-    "Github Username was found to be undefined. Please set all relevant environment variables.",
-  requestFailed:
-    "The request to GitHub didn't succeed. Check if GitHub token in your .env file is correct.",
-  requestFailedMedium:
-    "The request to Medium didn't succeed. Check if Medium username in your .env file is correct."
-};
-if (USE_GITHUB_DATA === "true") {
-  if (GITHUB_USERNAME === undefined) {
-    throw new Error(ERR.noUserName);
+function httpsRequest(options, body) {
+  return new Promise((resolve, reject) => {
+    const req = https.request(options, res => {
+      let data = "";
+      res.on("data", chunk => {
+        data += chunk;
+      });
+      res.on("end", () => {
+        resolve({statusCode: res.statusCode, data});
+      });
+    });
+    req.on("error", reject);
+    if (body) {
+      req.write(body);
+    }
+    req.end();
+  });
+}
+
+async function fetchGitHubProfile() {
+  if (USE_GITHUB_DATA !== "true") {
+    console.log("Skipping GitHub data fetch (USE_GITHUB_DATA is not true).");
+    return;
+  }
+
+  if (!GITHUB_USERNAME || !GITHUB_TOKEN) {
+    console.warn(
+      "Skipping GitHub data fetch: GITHUB_USERNAME or REACT_APP_GITHUB_TOKEN is missing. The portfolio will build without GitHub profile data."
+    );
+    return;
   }
 
   console.log(`Fetching profile data for ${GITHUB_USERNAME}`);
-  var data = JSON.stringify({
+  const query = JSON.stringify({
     query: `
 {
-  user(login:"${GITHUB_USERNAME}") { 
+  user(login:"${GITHUB_USERNAME}") {
     name
     bio
     avatarUrl
@@ -56,75 +74,77 @@ if (USE_GITHUB_DATA === "true") {
 }
 `
   });
-  const default_options = {
-    hostname: "api.github.com",
-    path: "/graphql",
-    port: 443,
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${GITHUB_TOKEN}`,
-      "User-Agent": "Node"
+
+  try {
+    const {statusCode, data} = await httpsRequest(
+      {
+        hostname: "api.github.com",
+        path: "/graphql",
+        port: 443,
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${GITHUB_TOKEN}`,
+          "User-Agent": "Node"
+        }
+      },
+      query
+    );
+
+    if (statusCode !== 200) {
+      console.warn(
+        `GitHub request failed with status ${statusCode}. Continuing build without GitHub data.`
+      );
+      return;
     }
-  };
 
-  const req = https.request(default_options, res => {
-    let data = "";
-
-    console.log(`statusCode: ${res.statusCode}`);
-    if (res.statusCode !== 200) {
-      throw new Error(ERR.requestFailed);
-    }
-
-    res.on("data", d => {
-      data += d;
-    });
-    res.on("end", () => {
-      fs.writeFile("./public/profile.json", data, function (err) {
-        if (err) return console.log(err);
-        console.log("saved file to public/profile.json");
-      });
-    });
-  });
-
-  req.on("error", error => {
-    throw error;
-  });
-
-  req.write(data);
-  req.end();
+    fs.writeFileSync("./public/profile.json", data);
+    console.log("saved file to public/profile.json");
+  } catch (error) {
+    console.warn(
+      "GitHub request failed. Continuing build without GitHub data.",
+      error.message || error
+    );
+  }
 }
 
-if (MEDIUM_USERNAME !== undefined) {
+async function fetchMediumBlogs() {
+  if (!MEDIUM_USERNAME) {
+    return;
+  }
+
   console.log(`Fetching Medium blogs data for ${MEDIUM_USERNAME}`);
-  const options = {
-    hostname: "api.rss2json.com",
-    path: `/v1/api.json?rss_url=https://medium.com/feed/@${MEDIUM_USERNAME}`,
-    port: 443,
-    method: "GET"
-  };
+  try {
+    const {statusCode, data} = await httpsRequest({
+      hostname: "api.rss2json.com",
+      path: `/v1/api.json?rss_url=https://medium.com/feed/@${MEDIUM_USERNAME}`,
+      port: 443,
+      method: "GET"
+    });
 
-  const req = https.request(options, res => {
-    let mediumData = "";
-
-    console.log(`statusCode: ${res.statusCode}`);
-    if (res.statusCode !== 200) {
-      throw new Error(ERR.requestMediumFailed);
+    if (statusCode !== 200) {
+      console.warn(
+        `Medium request failed with status ${statusCode}. Continuing build without Medium data.`
+      );
+      return;
     }
 
-    res.on("data", d => {
-      mediumData += d;
-    });
-    res.on("end", () => {
-      fs.writeFile("./public/blogs.json", mediumData, function (err) {
-        if (err) return console.log(err);
-        console.log("saved file to public/blogs.json");
-      });
-    });
-  });
-
-  req.on("error", error => {
-    throw error;
-  });
-
-  req.end();
+    fs.writeFileSync("./public/blogs.json", data);
+    console.log("saved file to public/blogs.json");
+  } catch (error) {
+    console.warn(
+      "Medium request failed. Continuing build without Medium data.",
+      error.message || error
+    );
+  }
 }
+
+async function main() {
+  await Promise.all([fetchGitHubProfile(), fetchMediumBlogs()]);
+}
+
+main().catch(error => {
+  console.warn(
+    "Optional data fetch failed. Continuing with the production build.",
+    error.message || error
+  );
+});
