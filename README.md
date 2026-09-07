@@ -2,7 +2,7 @@
 
 Personal software engineering portfolio of **Zeyad Essam (Zeyad Elmr3shly)**. The site presents full-stack and backend work, data analysis, selected projects, education, experience, and ways to get in touch.
 
-**Live site:** [https://zeyadzeca.github.io/ZeyadFolio](https://zeyadzeca.github.io/ZeyadFolio)
+**Live site:** [https://zeyadfolio.vercel.app/](https://zeyadfolio.vercel.app/)
 
 ## Overview
 
@@ -67,4 +67,4 @@ Optional GitHub profile fetching uses a local `.env` file. Copy `.env.example` t
 
 The site is deployed with GitHub Pages. The GitHub Actions workflow in `.github/workflows/deploy.yml` builds the app and publishes the `build` output to the `gh-pages` branch.
 
-The production homepage is `https://zeyadzeca.github.io/ZeyadFolio`.
+The production homepage is `https://zeyadfolio.vercel.app/`.
