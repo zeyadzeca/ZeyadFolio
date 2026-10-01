@@ -26,6 +26,7 @@
   width: 2.6rem;
   margin-bottom: 10px;
   transition: 0.2s ease-in;
+  box-shadow: 0 0 0 1px rgba(58, 224, 255, 0.25);
 }
 
 .facebook i {
@@ -37,7 +38,7 @@
 }
 
 .github i {
-  background-color: $github;
+  background-color: #2d3a66;
 }
 
 .gitlab i {

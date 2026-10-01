@@ -1,4 +1,4 @@
-# This file is the main docker file configurations
+# Docker setup for the FullStackFolio template maintained by ZNteam.
 
 # Official Node JS runtime as a parent image
 FROM node:20.0-alpine

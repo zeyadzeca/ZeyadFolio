@@ -18,27 +18,40 @@
   line-height: 1.5rem;
 }
 .certificate-card {
-  background-color: $lightBackground2;
-  box-shadow: $lightBoxShadowDark 0px 10px 30px -15px;
-  padding: 1.5rem;
-  border-radius: 10px;
-  border: 1px solid $lightBorder1;
-  -webkit-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
-  transition: all 0.3s ease;
+  position: relative;
+  background: rgba(12, 18, 42, 0.72);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.25);
+  padding: 2.2rem 1.5rem 1.5rem;
+  border-radius: 22px;
+  border: 1px solid rgba(122, 168, 255, 0.22);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.mission-chip {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #081018;
+  background: $accentCyan;
 }
 .certificate-detail-div {
   text-align: center;
 }
 .certificate-card:hover {
-  box-shadow: $lightBoxShadowDark 0px 20px 30px -10px;
+  transform: translateY(-4px);
+  box-shadow: 0 0 22px rgba(124, 109, 255, 0.22);
 }
 .dark-mode.certificate-card:hover {
   box-shadow: $achievementCertificateCardHoverDark 0px 20px 30px -10px;
 }
 .certificate-image-div {
   position: relative;
-  height: 250px;
+  max-height: 180px;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -57,10 +70,10 @@
 }
 .certificate-card-footer span.certificate-tag {
   background: $buttonColor;
-  color: $lightBackground3;
+  color: $textColorDark;
   vertical-align: middle;
   align-items: center;
-  border-radius: 4px;
+  border-radius: 999px;
   display: inline-flex;
   font-size: 0.75rem;
   height: 2em;
@@ -72,6 +85,25 @@
   cursor: pointer;
   transition: 0.2s ease-in;
 }
+
 span.certificate-tag:hover {
-  background: $buttonHover;
+  background: $accentCyan;
+  color: #081018;
+}
+
+@media (max-width: 768px) {
+  #achievements .section-orbit,
+  .achievement-heading {
+    text-align: center;
+  }
+  #achievements .section-orbit {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .certificate-card:hover {
+    transform: none;
+  }
 }

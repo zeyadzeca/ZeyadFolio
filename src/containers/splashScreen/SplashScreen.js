@@ -16,6 +16,7 @@ export default function SplashScreen() {
         <span className="splash-title">{greeting.username}</span>
         <span className="grey-color">/&gt;</span>
       </div>
+      <p className="splash-orbit">Entering orbit…</p>
     </div>
   );
 }

@@ -1,64 +1,63 @@
 @import "../../_globalColor";
 
-.skills-main-div {
-  display: flex;
-  width: 100%;
-  overflow: hidden;
+.skills-section {
+  width: min(1120px, 92%);
+  margin: 0 auto;
+  padding: 85px 0;
+  scroll-margin-top: 100px;
 }
 
-.skills-text-div {
-  margin-left: 50px;
+.skills-header {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+  gap: 50px;
+  align-items: end;
+  margin-bottom: 35px;
 }
 
-.skills-main-div > * {
-  flex: 1;
-  margin-bottom: 30px;
+.skills-header h2 {
+  color: $textColorDark;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  margin: 10px 0 0;
 }
 
-.skills-image-div > img {
-  max-width: 100%;
-  height: auto;
-}
-
-.skills-heading {
-  font-size: 56px;
-  font-weight: 400;
-}
-.subTitle {
+.skills-header > p {
   color: $subTitle;
+  line-height: 1.8;
+  margin: 0;
 }
 
-/* Media Query */
-@media (max-width: 1380px) {
-  .skills-heading {
-    font-size: 40px;
-  }
+.skills-panel {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  min-height: 230px;
+  border: 1px solid rgba(122, 168, 255, 0.16);
+  background: rgba(8, 14, 31, 0.5);
 }
-@media (max-width: 768px) {
-  .skills-heading {
-    font-size: 30px;
-    text-align: center;
-  }
-  .greeting-text-p {
-    font-size: 16px;
-    line-height: normal;
-  }
-  .skills-main-div {
-    flex-direction: column;
-  }
-  .skills-text-div {
-    margin-left: 0px;
-    margin: 20px;
-  }
-  .skills-text {
-    font-size: 16px;
-  }
-  .skills-text-subtitle {
-    font-size: 16px;
-    text-align: center;
-  }
-  .skills-image-div {
-    /* display: none; */
-    order: 2;
-  }
+
+.skills-index {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  border-right: 1px solid rgba(122, 168, 255, 0.16);
+  color: rgba(169, 182, 212, 0.55);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+}
+
+.skills-index strong {
+  color: $accentCyan;
+  font-size: 2.4rem;
+  letter-spacing: -0.06em;
+}
+
+.skills-orbs-div {
+  padding: 35px;
+}
+
+@media (max-width: 800px) {
+  .skills-header { grid-template-columns: 1fr; gap: 18px; }
+  .skills-panel { grid-template-columns: 70px 1fr; }
+  .skills-orbs-div { padding: 25px 15px; }
 }

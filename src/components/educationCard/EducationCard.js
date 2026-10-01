@@ -3,7 +3,7 @@ import {Fade, Slide} from "react-reveal";
 import "./EducationCard.scss";
 import StyleContext from "../../contexts/StyleContext";
 
-export default function EducationCard({school}) {
+export default function EducationCard({school, stationLabel}) {
   const imgRef = createRef();
 
   const GetDescBullets = ({descBullets}) => {
@@ -23,6 +23,9 @@ export default function EducationCard({school}) {
     <div>
       <Fade left duration={1000}>
         <div className="education-card">
+          {stationLabel ? (
+            <span className="station-chip">{stationLabel}</span>
+          ) : null}
           {school.logo && (
             <div className="education-card-left">
               <img

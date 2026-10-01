@@ -6,11 +6,20 @@
   padding: 1.5rem;
 }
 .tw-main-div {
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 15px;
-  width: auto;
+  width: min(1180px, 92%);
   padding: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .tw-main-div .section-orbit {
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 .twitter-component {
   width: auto;

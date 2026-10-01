@@ -13,6 +13,7 @@ export default function AchievementCard({cardInfo, isDark}) {
 
   return (
     <div className={isDark ? "dark-mode certificate-card" : "certificate-card"}>
+      <span className="mission-chip">Mission Badge</span>
       <div className="certificate-image-div">
         <img
           src={cardInfo.image}

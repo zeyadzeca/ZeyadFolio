@@ -14,9 +14,9 @@ export default function socialMedia() {
           className="icon-button github"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="GitHub"
         >
-          <i className="fab fa-github"></i>
-          <span></span>
+          <i className="fab fa-github" aria-hidden="true"></i>
         </a>
       ) : null}
 
@@ -26,9 +26,9 @@ export default function socialMedia() {
           className="icon-button linkedin"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="LinkedIn"
         >
-          <i className="fab fa-linkedin-in"></i>
-          <span></span>
+          <i className="fab fa-linkedin-in" aria-hidden="true"></i>
         </a>
       ) : null}
 
@@ -38,9 +38,9 @@ export default function socialMedia() {
           className="icon-button google"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Email"
         >
-          <i className="fas fa-envelope"></i>
-          <span></span>
+          <i className="fas fa-envelope" aria-hidden="true"></i>
         </a>
       ) : null}
 
@@ -50,9 +50,9 @@ export default function socialMedia() {
           className="icon-button gitlab"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="GitLab"
         >
-          <i className="fab fa-gitlab"></i>
-          <span></span>
+          <i className="fab fa-gitlab" aria-hidden="true"></i>
         </a>
       ) : null}
 
@@ -62,9 +62,9 @@ export default function socialMedia() {
           className="icon-button facebook"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Facebook"
         >
-          <i className="fab fa-facebook-f"></i>
-          <span></span>
+          <i className="fab fa-facebook-f" aria-hidden="true"></i>
         </a>
       ) : null}
 
@@ -74,9 +74,9 @@ export default function socialMedia() {
           className="icon-button instagram"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Instagram"
         >
-          <i className="fab fa-instagram"></i>
-          <span></span>
+          <i className="fab fa-instagram" aria-hidden="true"></i>
         </a>
       ) : null}
 
@@ -86,9 +86,9 @@ export default function socialMedia() {
           className="icon-button twitter"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Twitter"
         >
-          <i className="fab fa-twitter"></i>
-          <span></span>
+          <i className="fab fa-twitter" aria-hidden="true"></i>
         </a>
       ) : null}
 
@@ -98,9 +98,9 @@ export default function socialMedia() {
           className="icon-button medium"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Medium"
         >
-          <i className="fab fa-medium"></i>
-          <span></span>
+          <i className="fab fa-medium" aria-hidden="true"></i>
         </a>
       ) : null}
 
@@ -110,9 +110,9 @@ export default function socialMedia() {
           className="icon-button stack-overflow"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Stack Overflow"
         >
-          <i className="fab fa-stack-overflow"></i>
-          <span></span>
+          <i className="fab fa-stack-overflow" aria-hidden="true"></i>
         </a>
       ) : null}
 
@@ -122,9 +122,9 @@ export default function socialMedia() {
           className="icon-button kaggle"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Kaggle"
         >
-          <i className="fab fa-kaggle"></i>
-          <span></span>
+          <i className="fab fa-kaggle" aria-hidden="true"></i>
         </a>
       ) : null}
     </div>

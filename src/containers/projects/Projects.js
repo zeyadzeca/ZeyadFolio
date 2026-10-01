@@ -1,22 +1,17 @@
-import React, {useState, useEffect, useContext, Suspense, lazy} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import "./Project.scss";
 import Button from "../../components/button/Button";
+import GithubRepoCard from "../../components/githubRepoCard/GithubRepoCard";
 import {openSource, socialMediaLinks} from "../../portfolio";
 import StyleContext from "../../contexts/StyleContext";
-import Loading from "../../containers/loading/Loading";
+
 export default function Projects() {
-  const GithubRepoCard = lazy(() =>
-    import("../../components/githubRepoCard/GithubRepoCard")
-  );
-  const FailedLoading = () => null;
-  const renderLoader = () => <Loading />;
   const [repo, setrepo] = useState([]);
-  // todo: remove useContex because is not supported
   const {isDark} = useContext(StyleContext);
 
   useEffect(() => {
     if (!openSource.display) {
-      return;
+      return undefined;
     }
     const getRepoData = () => {
       fetch("/profile.json")
@@ -33,55 +28,45 @@ export default function Projects() {
             response.data.user &&
             response.data.user.pinnedItems &&
             response.data.user.pinnedItems.edges;
-          if (!Array.isArray(edges)) {
-            throw new Error("GitHub repository data is unavailable");
-          }
-          setrepoFunction(edges);
+          setrepo(Array.isArray(edges) ? edges : []);
         })
         .catch(function (error) {
           console.error(
             `${error} (because of this error, nothing is shown in place of Projects section. Also check if Projects section has been configured)`
           );
-          setrepoFunction("Error");
+          setrepo([]);
         });
     };
     getRepoData();
   }, []);
 
-  function setrepoFunction(array) {
-    setrepo(array);
+  if (!openSource.display || !repo.length) {
+    return null;
   }
-  if (
-    !(typeof repo === "string" || repo instanceof String) &&
-    openSource.display
-  ) {
-    return (
-      <Suspense fallback={renderLoader()}>
-        <div className="main" id="opensource">
-          <h1 className="project-title">Open Source Projects</h1>
-          <div className="repo-cards-div-main">
-            {repo.map((v, i) => {
-              if (!v || !v.node) {
-                console.error(
-                  `Github Object for repository number : ${i} is undefined`
-                );
-                return null;
-              }
-              return (
-                <GithubRepoCard repo={v} key={v.node.id} isDark={isDark} />
-              );
-            })}
-          </div>
-          <Button
-            text={"More Projects"}
-            className="project-button"
-            href={socialMediaLinks.github}
-            newTab={true}
-          />
-        </div>
-      </Suspense>
-    );
-  } else {
-    return <FailedLoading />;
-  }
+
+  return (
+    <section className="main" id="opensource" aria-label="Open source galaxy">
+      <span className="section-orbit">Project Galaxy</span>
+      <h1 className="project-title">Open Source Missions</h1>
+      <div className="repo-cards-div-main">
+        {repo.map((v, i) => {
+          if (!v) {
+            console.error(
+              `Github Object for repository number : ${i} is undefined`
+            );
+            return null;
+          }
+          return <GithubRepoCard repo={v} key={v.node.id} isDark={isDark} />;
+        })}
+      </div>
+      {socialMediaLinks.github ? (
+        <Button
+          text={"More Projects"}
+          className="project-button"
+          href={socialMediaLinks.github}
+          newTab={true}
+        />
+      ) : null}
+    </section>
+  );
 }

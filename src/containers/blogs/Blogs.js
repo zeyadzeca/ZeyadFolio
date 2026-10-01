@@ -29,12 +29,8 @@ export default function Blogs() {
             if (result.ok) {
               return result.json();
             }
-            throw new Error("Medium blog data is unavailable");
           })
           .then(response => {
-            if (!response || !Array.isArray(response.items)) {
-              throw new Error("Medium blog data is unavailable");
-            }
             setMediumBlogsFunction(response.items);
           })
           .catch(function (error) {
@@ -55,6 +51,7 @@ export default function Blogs() {
     <Fade bottom duration={1000} distance="20px">
       <div className="main" id="blogs">
         <div className="blog-header">
+          <span className="section-orbit">Signal Logs</span>
           <h1 className="blog-header-text">{blogSection.title}</h1>
           <p
             className={
@@ -67,7 +64,8 @@ export default function Blogs() {
         <div className="blog-main-div">
           <div className="blog-text-div">
             {blogSection.displayMediumBlogs !== "true" ||
-            mediumBlogs === "Error"
+            mediumBlogs === "Error" ||
+            !mediumBlogs.length
               ? blogSection.blogs.map((blog, i) => {
                   return (
                     <BlogCard

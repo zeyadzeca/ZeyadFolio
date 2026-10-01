@@ -1,5 +1,4 @@
-import React, {useContext} from "react";
-import Headroom from "react-headroom";
+import React, {useContext, useEffect, useState} from "react";
 import "./Header.scss";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import StyleContext from "../../contexts/StyleContext";
@@ -7,87 +6,101 @@ import {
   greeting,
   workExperiences,
   skillsSection,
-  openSource,
-  blogSection,
-  talkSection,
-  achievementSection,
-  resumeSection
+  servicesSection,
+  resumeSection,
+  educationInfo,
+  bigProjects
 } from "../../portfolio";
 
 function Header() {
   const {isDark} = useContext(StyleContext);
-  const viewExperience = workExperiences.display;
-  const viewOpenSource = openSource.display;
-  const viewSkills = skillsSection.display;
-  const viewAchievement = achievementSection.display;
-  const viewBlog = blogSection.display;
-  const viewTalks = talkSection.display;
-  const viewResume = resumeSection.display;
+  const [activeSection, setActiveSection] = useState("greeting");
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const ids = [
+      "greeting",
+      "about",
+      "services",
+      "skills",
+      "education",
+      "experience",
+      "projects",
+      "contact"
+    ];
+    const nodes = ids.map(id => document.getElementById(id)).filter(Boolean);
+    if (!nodes.length || typeof IntersectionObserver === "undefined") return;
+
+    const observer = new IntersectionObserver(
+      entries => {
+        const visible = entries
+          .filter(entry => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) setActiveSection(visible.target.id);
+      },
+      {rootMargin: "-35% 0px -50% 0px", threshold: [0.15, 0.35, 0.6]}
+    );
+
+    nodes.forEach(node => observer.observe(node));
+    return () => observer.disconnect();
+  }, []);
+
+  const closeMenu = () => setMenuOpen(false);
+
+  const navItem = (href, label, id) => (
+    <li key={id}>
+      <a
+        href={href}
+        className={activeSection === id ? "active-nav" : ""}
+        onClick={closeMenu}
+        aria-current={activeSection === id ? "location" : undefined}
+      >
+        {label}
+      </a>
+    </li>
+  );
 
   return (
-    <Headroom>
-      <header className={isDark ? "dark-menu header" : "header"}>
-        <a href="/" className="logo">
-          <span className="grey-color"> &lt;</span>
-          <span className="logo-name">{greeting.username}</span>
-          <span className="grey-color">/&gt;</span>
-        </a>
-        <input className="menu-btn" type="checkbox" id="menu-btn" />
-        <label
-          className="menu-icon"
-          htmlFor="menu-btn"
-          style={{color: "white"}}
-        >
-          <span className={isDark ? "navicon navicon-dark" : "navicon"}></span>
-        </label>
+    <header className={isDark ? "dark-menu header space-nav" : "header space-nav"}>
+      <a href="#greeting" className="logo" onClick={closeMenu}>
+        <span className="logo-bracket">[</span>
+        <span className="logo-name">{greeting.username}</span>
+        <span className="logo-bracket">]</span>
+      </a>
+
+      <input
+        className="menu-btn"
+        type="checkbox"
+        id="menu-btn"
+        checked={menuOpen}
+        onChange={() => setMenuOpen(!menuOpen)}
+      />
+      <label className="menu-icon" htmlFor="menu-btn" aria-label="Toggle navigation">
+        <span className={isDark ? "navicon navicon-dark" : "navicon"}></span>
+      </label>
+
+      <nav aria-label="Main navigation">
         <ul className={isDark ? "dark-menu menu" : "menu"}>
-          {viewSkills && (
-            <li>
-              <a href="#skills">Skills</a>
+          {navItem("#greeting", "Home", "greeting")}
+          {navItem("#about", "About", "about")}
+          {servicesSection.display && navItem("#services", "Services", "services")}
+          {skillsSection.display && navItem("#skills", "Skills", "skills")}
+          {educationInfo.display && navItem("#education", "Education", "education")}
+          {workExperiences.display && navItem("#experience", "Experience", "experience")}
+          {bigProjects.display && navItem("#projects", "Projects", "projects")}
+          {navItem("#contact", "Contact", "contact")}
+          {resumeSection.display && greeting.resumeLink ? (
+            <li className="nav-resume">
+              <a href={greeting.resumeLink} target="_blank" rel="noopener noreferrer" onClick={closeMenu}>
+                Resume ↗
+              </a>
             </li>
-          )}
-          {viewExperience && (
-            <li>
-              <a href="#experience">Work Experiences</a>
-            </li>
-          )}
-          {viewOpenSource && (
-            <li>
-              <a href="#opensource">Open Source</a>
-            </li>
-          )}
-          {viewAchievement && (
-            <li>
-              <a href="#achievements">Achievements</a>
-            </li>
-          )}
-          {viewBlog && (
-            <li>
-              <a href="#blogs">Blogs</a>
-            </li>
-          )}
-          {viewTalks && (
-            <li>
-              <a href="#talks">Talks</a>
-            </li>
-          )}
-          {viewResume && (
-            <li>
-              <a href="#resume">Resume</a>
-            </li>
-          )}
-          <li>
-            <a href="#contact">Contact Me</a>
-          </li>
-          <li>
-            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-            <a>
-              <ToggleSwitch />
-            </a>
-          </li>
+          ) : null}
+          <li className="theme-toggle-item"><ToggleSwitch /></li>
         </ul>
-      </header>
-    </Headroom>
+      </nav>
+    </header>
   );
 }
+
 export default Header;

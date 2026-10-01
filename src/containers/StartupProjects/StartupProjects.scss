@@ -1,234 +1,146 @@
 @import "../../_globalColor";
 
-/* =========================
-   Projects Section
-========================= */
-
-#projects {
-  background: transparent !important;
-  color: white;
-  padding-top: 60px;
-  padding-bottom: 60px;
+.card-image {
+  max-width: 100%;
+  height: auto;
+  width: 220px;
 }
 
-/* Section title */
-#projects .skills-heading {
-  color: white !important;
+.card-title {
+  color: $textColorDark;
+  font-size: 1.35rem;
+  line-height: 1.3;
+  font-weight: 700;
+  margin: 15px 0 0 0;
 }
 
-/* Section subtitle */
-#projects .project-subtitle {
-  color: rgba(255, 255, 255, 0.75) !important;
-  font-size: 18px;
-  line-height: 1.6;
-  margin-bottom: 35px;
+.card-subtitle {
+  color: $cardSubtitle;
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
-
-/* =========================
-   Projects Grid
-========================= */
-
-.projects-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
-  align-items: stretch;
-}
-
-/* =========================
-   Project Card
-========================= */
 
 .project-card {
   position: relative;
   display: flex;
   flex-direction: column;
-  background: rgba(8, 8, 35, 0.72) !important;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  padding: 1.5rem;
-  border-radius: 18px;
-  border: 1px solid rgba(80, 210, 255, 0.45);
-  overflow: hidden;
-  min-height: 500px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  background: rgba(12, 18, 42, 0.72);
+  padding: 1.4rem;
+  border-radius: 24px;
+  border: 1px solid rgba(122, 168, 255, 0.22);
+  justify-content: flex-start;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-
-/* Purple / blue glow inside the card */
 
 .project-card::before {
   content: "";
   position: absolute;
-  top: -100px;
-  right: -100px;
-  width: 250px;
-  height: 250px;
-  background: radial-gradient(
-    circle,
-    rgba(80, 180, 255, 0.18),
-    transparent 70%
-  );
-  pointer-events: none;
+  top: 14px;
+  right: 14px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #fff, $accentPurple);
+  box-shadow: 0 0 12px rgba(124, 109, 255, 0.45);
 }
 
-/* Hover effect */
+.project-card-light,
+.project-card-dark {
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.25);
+}
+
+.project-detail {
+  text-align: center;
+}
 
 .project-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(80, 220, 255, 0.9);
-  box-shadow: 0 0 25px rgba(80, 210, 255, 0.18), 0 20px 40px rgba(0, 0, 0, 0.35);
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: 0 0 24px rgba(124, 109, 255, 0.22);
 }
-
-/* =========================
-   Project Image
-========================= */
 
 .project-image {
   position: relative;
-  width: 100%;
-  height: 230px;
+  min-height: 160px;
+  max-height: 220px;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.05);
 }
 
-.card-image {
-  width: 100%;
-  height: 100%;
-  max-width: 100%;
-  object-fit: cover;
-  border-radius: 12px;
-  transition: transform 0.4s ease;
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.2rem;
 }
-
-/* Image zoom on hover */
-
-.project-card:hover .card-image {
-  transform: scale(1.04);
-}
-
-/* =========================
-   Project Details
-========================= */
-
-.project-detail {
-  position: relative;
-  z-index: 1;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-/* Project title */
-
-.card-title {
-  color: white !important;
-  font-size: 22px;
-  line-height: 1.35;
-  font-weight: 700;
-  margin: 5px 0 12px 0;
-}
-
-/* Project description */
-
-.card-subtitle {
-  color: rgba(255, 255, 255, 0.78) !important;
-  font-size: 16px;
-  line-height: 1.7;
-  margin: 0;
-  flex: 1;
-}
-
-/* =========================
-   GitHub / Project Button
-========================= */
 
 .project-card-footer {
-  margin-top: 20px;
-}
-
-.project-card-footer span.project-tag {
-  background: transparent !important;
-  color: white !important;
-  border: 1px solid rgba(80, 210, 255, 0.7);
-  vertical-align: middle;
-  align-items: center;
-  border-radius: 8px;
-  display: inline-flex;
-  font-size: 0.85rem;
-  height: 2.5em;
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  gap: 8px;
+}
+
+.project-card-footer .project-tag {
+  background: $buttonColor;
+  color: $textColorDark;
+  border: 0;
+  border-radius: 999px;
+  display: inline-flex;
+  font-size: 0.78rem;
+  height: 2.2em;
+  justify-content: center;
+  align-items: center;
   white-space: nowrap;
-  line-height: 1.5;
-  margin: 0 0.5rem 0.5rem 0;
-  padding: 0 1rem;
+  padding: 0 0.9em;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: 0.2s ease-in;
 }
 
-.project-card-footer span.project-tag:hover {
-  background: rgba(80, 210, 255, 0.15) !important;
-  border-color: #50d8ff;
-  box-shadow: 0 0 12px rgba(80, 210, 255, 0.25);
+.project-card-footer .project-tag:hover {
+  background: $accentCyan;
+  color: #081018;
 }
-
-/* =========================
-   Dark Mode
-========================= */
-
-.project-card-dark {
-  background: rgba(3, 8, 30, 0.78) !important;
-}
-
-/* =========================
-   Light Mode
-========================= */
-
-.project-card-light {
-  background: rgba(10, 8, 40, 0.68) !important;
-}
-
-/* =========================
-   Mobile
-========================= */
 
 @media (max-width: 768px) {
-  #projects {
-    padding-top: 40px;
-    padding-bottom: 40px;
-  }
-
-  #projects .project-subtitle {
+  .project-subtitle {
     font-size: 16px;
     text-align: center;
   }
-
-  .projects-container {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+  #projects .section-orbit,
+  #projects .skills-heading {
+    text-align: center;
   }
-
-  .project-card {
-    min-height: auto;
-    padding: 1.2rem;
+  #projects .section-orbit {
+    margin-left: auto;
+    margin-right: auto;
   }
+}
 
-  .project-image {
-    height: 200px;
+@media (prefers-reduced-motion: reduce) {
+  .project-card:hover {
+    transform: none;
   }
+}
 
-  .card-title {
-    font-size: 20px;
-  }
+/* Keep projects inside the same centered reading rail as the rest of the site. */
+.projects-section {
+  width: min(1120px, 92%);
+  margin: 0 auto;
+  padding: 85px 0;
+  box-sizing: border-box;
+  scroll-margin-top: 100px;
+}
 
-  .card-subtitle {
-    font-size: 15px;
-    line-height: 1.6;
-  }
+.projects-inner {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.projects-section .skills-heading {
+  max-width: 820px;
+}
+
+.projects-section .project-subtitle {
+  max-width: 720px;
 }

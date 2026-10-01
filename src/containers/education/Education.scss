@@ -1,50 +1,151 @@
+@import "../../_globalColor";
+
 .education-heading {
-  font-size: 56px;
-  font-weight: 400;
+  font-size: clamp(1.8rem, 4vw, 3.2rem);
+  font-weight: 500;
+  color: $textColorDark;
+  margin: 0 0 8px;
+}
+
+.education-intro {
+  color: $subTitle;
+  margin: 0 0 24px;
+  max-width: 40rem;
 }
 
 .education-section {
   display: flex;
   flex-direction: column;
-  width: 90%;
+  width: min(1180px, 92%);
   padding: 20px 0px;
-  margin: 0px auto;
-  margin-top: 2rem;
+  margin: 2rem auto 0;
 }
 
-.education-section > * {
-  flex: 1;
-  margin-bottom: 30px;
+.knowledge-rail {
+  list-style: none;
+  margin: 0 0 24px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+}
+
+.knowledge-rail::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: linear-gradient($accentCyan, $accentPurple, $accentPink);
+  opacity: 0.55;
+}
+
+.orbit-stop {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: $accentCyan;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.orbit-stop p {
+  margin: 0;
+}
+
+.orbit-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 12px rgba(58, 224, 255, 0.5);
+  position: relative;
+  z-index: 1;
+}
+
+.orbit-dot.earth {
+  background: radial-gradient(circle at 30% 30%, #9ad7ff, #2f6bff);
+}
+
+.orbit-dot.knowledge {
+  background: radial-gradient(circle at 30% 30%, #fff4c2, #7c6dff);
+}
+
+.orbit-dot.station {
+  background: radial-gradient(circle at 30% 30%, #e8eeff, #3ae0ff);
+}
+
+.orbit-dot.future {
+  background: radial-gradient(circle at 30% 30%, #ffe0f2, #ff8ac7);
 }
 
 .education-card-container {
   display: flex;
   flex-direction: column;
-  padding-top: 20px;
 }
 
-@media (max-width: 1380px) {
-  .education-card-container {
-    padding-top: 0px;
+@media (min-width: 900px) {
+  .knowledge-rail {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 8px 8px 18px;
   }
-  .education-heading {
-    font-size: 40px;
+
+  .knowledge-rail::before {
+    left: 24px;
+    right: 24px;
+    top: 15px;
+    bottom: auto;
+    height: 2px;
+    width: auto;
   }
-  .education-text-subtitle {
-    font-size: 18px;
+
+  .orbit-stop {
+    flex-direction: column;
     text-align: center;
+    max-width: 160px;
   }
 }
 
 @media (max-width: 768px) {
-  .education-card-container {
-    padding-top: 0px;
-  }
-  .education-heading {
-    font-size: 30px;
+  .education-heading,
+  .education-intro {
     text-align: center;
   }
-  .education-text-subtitle {
-    font-size: 16px;
+  .education-section .section-orbit {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Keep the eyebrow and title visually separated, especially in the light theme. */
+.education-section .section-orbit {
+  display: block;
+  width: fit-content;
+  margin-bottom: 10px;
+}
+
+.education-heading {
+  line-height: 1.05;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.education-intro {
+  line-height: 1.65;
+}
+
+@media (min-width: 900px) {
+  .education-section {
+    width: min(1120px, 92%);
+  }
+
+  .knowledge-rail {
+    margin-top: 30px;
   }
 }

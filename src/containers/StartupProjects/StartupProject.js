@@ -10,9 +10,7 @@ export default function StartupProject() {
       return;
     }
     var win = window.open(url, "_blank");
-    if (win) {
-      win.focus();
-    }
+    win.focus();
   }
 
   const {isDark} = useContext(StyleContext);
@@ -21,8 +19,9 @@ export default function StartupProject() {
   }
   return (
     <Fade bottom duration={1000} distance="20px">
-      <div className="main" id="projects">
-        <div>
+      <section className="main projects-section" id="projects" aria-label="Project Galaxy">
+        <div className="projects-inner">
+          <span className="section-orbit">Selected work</span>
           <h1 className="skills-heading">{bigProjects.title}</h1>
           <p
             className={
@@ -37,7 +36,7 @@ export default function StartupProject() {
           <div className="projects-container">
             {bigProjects.projects.map((project, i) => {
               return (
-                <div
+                <article
                   key={i}
                   className={
                     isDark
@@ -70,27 +69,35 @@ export default function StartupProject() {
                     {project.footerLink ? (
                       <div className="project-card-footer">
                         {project.footerLink.map((link, i) => {
+                          const isGithub =
+                            /github/i.test(link.name) ||
+                            (link.url && link.url.includes("github.com"));
                           return (
-                            <span
+                            <button
+                              type="button"
                               key={i}
                               className={
                                 isDark ? "dark-mode project-tag" : "project-tag"
                               }
                               onClick={() => openUrlInNewTab(link.url)}
                             >
-                              {link.name}
-                            </span>
+                              {isGithub
+                                ? "GitHub"
+                                : /visit/i.test(link.name)
+                                ? link.name
+                                : link.name}
+                            </button>
                           );
                         })}
                       </div>
                     ) : null}
                   </div>
-                </div>
+                </article>
               );
             })}
           </div>
         </div>
-      </div>
+      </section>
     </Fade>
   );
 }

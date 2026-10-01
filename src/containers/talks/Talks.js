@@ -14,6 +14,7 @@ export default function Talks() {
     <Fade bottom duration={1000} distance="20px">
       <div className="main" id="talks">
         <div className="talk-header">
+          <span className="section-orbit">Broadcast Tower</span>
           <h1 className="talk-header-title">{talkSection.title}</h1>
           <p
             className={
@@ -24,21 +25,23 @@ export default function Talks() {
           >
             {talkSection.subtitle}
           </p>
-          {talkSection.talks.map((talk, i) => {
-            return (
-              <TalkCard
-                key={i}
-                talkDetails={{
-                  title: talk.title,
-                  subtitle: talk.subtitle,
-                  slides_url: talk.slides_url,
-                  event_url: talk.event_url,
-                  image: talk.image,
-                  isDark
-                }}
-              />
-            );
-          })}
+          <div className="talk-cards-div">
+            {talkSection.talks.map((talk, i) => {
+              return (
+                <TalkCard
+                  key={i}
+                  talkDetails={{
+                    title: talk.title,
+                    subtitle: talk.subtitle,
+                    slides_url: talk.slides_url,
+                    event_url: talk.event_url,
+                    image: talk.image,
+                    isDark
+                  }}
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
     </Fade>

@@ -14,6 +14,7 @@ export default function Achievement() {
       <div className="main" id="achievements">
         <div className="achievement-main-div">
           <div className="achievement-header">
+            <span className="section-orbit">Achievement Belt</span>
             <h1
               className={
                 isDark

@@ -5,7 +5,7 @@ labels: ["bug"]
 body:
   - type: markdown
     attributes:
-      value: Please fill out each section below. Before opening a new issue, search existing issues [here](https://github.com/zeyadzeca/ZeyadFolio/issues).
+      value: Thanks for helping improve this ZNteam portfolio template. Please fill out each section below so maintainers can diagnose and fix the issue quickly.
 
   - type: textarea
     id: description

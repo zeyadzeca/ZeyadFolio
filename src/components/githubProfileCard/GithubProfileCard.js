@@ -1,14 +1,12 @@
 import React from "react";
 import "./GithubProfileCard.scss";
 import SocialMedia from "../../components/socialMedia/SocialMedia";
+import Button from "../../components/button/Button";
 import {contactInfo, isHireable} from "../../portfolio";
 import emoji from "react-easy-emoji";
 import {Fade} from "react-reveal";
 
 export default function GithubProfileCard({prof}) {
-  if (!prof) {
-    return null;
-  }
   if (isHireable) {
     prof.hireable = "Yes";
   } else {
@@ -16,14 +14,15 @@ export default function GithubProfileCard({prof}) {
   }
   return (
     <Fade bottom duration={1000} distance="20px">
-      <div className="main" id="contact">
-        <h1 className="prof-title">Reach Out to me!</h1>
-        <div className="row">
+      <section className="main" id="contact" aria-label="Communication Station">
+        <span className="section-orbit">Earth Station</span>
+        <h1 className="prof-title">Let's Connect</h1>
+        <div className="row glass-panel profile-panel">
           <div className="main-content-profile">
             <div className="blog-header">
               <p className="subTitle blog-subtitle">{contactInfo.subtitle}</p>
             </div>
-            <h2 className="bio-text">"{emoji(String(prof.bio))}"</h2>
+            <h2 className="bio-text">"{emoji(String(prof.bio || ""))}"</h2>
             {prof.location !== null && (
               <div className="location-div">
                 <span className="desc-prof">
@@ -49,6 +48,30 @@ export default function GithubProfileCard({prof}) {
                 Open for opportunities: {prof.hireable}
               </span>
             </div>
+            {contactInfo.number && (
+              <a
+                className="desc-prof contact-inline"
+                href={"tel:" + contactInfo.number}
+              >
+                {contactInfo.number}
+              </a>
+            )}
+            {contactInfo.email_address && (
+              <a
+                className="desc-prof contact-inline"
+                href={"mailto:" + contactInfo.email_address}
+              >
+                {contactInfo.email_address}
+              </a>
+            )}
+            <div className="contact-actions">
+              {contactInfo.email_address ? (
+                <Button
+                  text="Send a Transmission"
+                  href={"mailto:" + contactInfo.email_address}
+                />
+              ) : null}
+            </div>
             <SocialMedia />
           </div>
           <div className="image-content-profile">
@@ -59,7 +82,7 @@ export default function GithubProfileCard({prof}) {
             />
           </div>
         </div>
-      </div>
+      </section>
     </Fade>
   );
 }

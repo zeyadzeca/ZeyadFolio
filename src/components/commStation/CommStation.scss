@@ -1,0 +1,33 @@
+.comm-station {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.comm-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.signal {
+  animation: pulse-ring 3.6s ease-out infinite;
+  transform-origin: 210px 150px;
+}
+
+@keyframes pulse-ring {
+  0% {
+    opacity: 0.8;
+    r: 40;
+  }
+  100% {
+    opacity: 0;
+    r: 110;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .signal {
+    animation: none;
+  }
+}

@@ -1,87 +1,95 @@
 @import "../../_globalColor";
 
-.contact-div-main {
+.cta-section {
+  width: min(1120px, 92%);
+  margin: 0 auto;
+  padding: 90px 0 100px;
+  scroll-margin-top: 100px;
+}
+
+.cta-inner {
+  position: relative;
+  overflow: hidden;
+  padding: 35px 38px 42px;
+  border: 1px solid rgba(58, 224, 255, 0.24);
+  background: linear-gradient(135deg, rgba(14, 25, 49, 0.95), rgba(8, 14, 31, 0.85));
+}
+
+.cta-inner::before {
+  content: "";
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  right: -160px;
+  top: -180px;
+  border: 1px solid rgba(58, 224, 255, 0.14);
+  border-radius: 50%;
+}
+
+.cta-topline {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(122, 168, 255, 0.14);
+  padding-bottom: 18px;
 }
 
-.dark-mode a {
+.cta-index {
+  color: rgba(169, 182, 212, 0.55);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+}
+
+.cta-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 55px;
+  padding-top: 45px;
+  align-items: end;
+}
+
+.cta-grid h2 {
   color: $textColorDark;
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+  margin: 0 0 24px;
+  max-width: 720px;
 }
 
-.contact-div-main > * {
-  flex: 1;
-}
-
-.contact-title {
-  font-size: 65px;
-  font-weight: 400;
-}
-
-.contact-detail,
-.contact-detail-email {
-  margin-top: 20px;
-  font-size: 40px;
-  font-weight: 400;
+.cta-grid p {
   color: $subTitle;
+  max-width: 580px;
+  line-height: 1.8;
+}
+
+.cta-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.cta-actions .secondary-button .main-button {
+  background: transparent;
+  border-color: rgba(122, 168, 255, 0.3);
+}
+
+.cta-email {
+  color: $accentCyan;
+  font-size: 0.82rem;
+  margin: 25px 0 8px;
   text-decoration: none;
+  word-break: break-word;
 }
 
-.contact-detail:hover,
-.contact-detail-email:hover {
-  color: $textColor;
-  text-shadow: 2px 1px 2px $contactDetailHoverTS;
-  transition: all 0.3s;
+.cta-email:hover { color: $textColorDark; }
+
+@media (max-width: 800px) {
+  .cta-grid { grid-template-columns: 1fr; gap: 25px; }
+  .cta-inner { padding: 28px 22px 32px; }
 }
 
-.contact-subtitle {
-  text-transform: uppercase;
-}
-
-.contact-text-div {
-  margin-top: 1.5rem;
-}
-
-.contact-margin-top {
-  margin-top: 4rem;
-}
-
-.contact-image-div > img {
-  max-width: 100%;
-  height: auto;
-  margin-left: 1.5rem;
-  margin-top: -4rem;
-}
-
-/* Media Query */
-@media (max-width: 1380px), (max-width: 768px) {
-  .contact-title {
-    font-size: 56px;
-    font-weight: 400;
-    text-align: center;
-  }
-
-  .contact-title {
-    font-size: 40px;
-    text-align: center;
-  }
-
-  .contact-subtitle {
-    font-size: 16px;
-    line-height: normal;
-    text-align: center;
-  }
-
-  .contact-text-div {
-    text-align: center;
-    margin-top: 1.5rem;
-  }
-
-  .contact-detail,
-  .contact-detail-email {
-    font-size: 20px;
-  }
-
-  .contact-image-div {
-    display: none;
-  }
+@media (max-width: 520px) {
+  .cta-topline { align-items: flex-start; gap: 15px; flex-direction: column; }
+  .cta-grid h2 { font-size: 2.6rem; }
 }

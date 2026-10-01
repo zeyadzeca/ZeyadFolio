@@ -9,17 +9,22 @@ export default function WorkExperience() {
   const {isDark} = useContext(StyleContext);
   if (workExperiences.display) {
     return (
-      <div id="experience">
+      <section id="experience" aria-label="Career Mission Timeline">
         <Fade bottom duration={1000} distance="20px">
           <div className="experience-container" id="workExperience">
             <div>
-              <h1 className="experience-heading">Experiences</h1>
+              <span className="section-orbit">Career Space Station</span>
+              <h1 className="experience-heading">Career Missions</h1>
+              <p className="experience-intro">
+                Completed missions across the career space station.
+              </p>
               <div className="experience-cards-div">
                 {workExperiences.experience.map((card, i) => {
                   return (
                     <ExperienceCard
                       key={i}
                       isDark={isDark}
+                      missionIndex={i + 1}
                       cardInfo={{
                         company: card.company,
                         desc: card.desc,
@@ -35,7 +40,7 @@ export default function WorkExperience() {
             </div>
           </div>
         </Fade>
-      </div>
+      </section>
     );
   }
   return null;

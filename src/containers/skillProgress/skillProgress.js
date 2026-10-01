@@ -1,17 +1,16 @@
 import React from "react";
 import "./Progress.scss";
-import {illustration, techStack} from "../../portfolio";
+import {techStack} from "../../portfolio";
 import {Fade} from "react-reveal";
-import Build from "../../assets/lottie/build";
-import DisplayLottie from "../../components/displayLottie/DisplayLottie";
 
 export default function StackProgress() {
   if (techStack.viewSkillBars) {
     return (
       <Fade bottom duration={1000} distance="20px">
         <div className="skills-container">
-          <div className="skills-bar">
-            <h1 className="skills-heading">Proficiency</h1>
+          <div className="skills-bar glass-panel">
+            <span className="section-orbit">Mission Control</span>
+            <h1 className="skills-heading">Signal Strength</h1>
             {techStack.experience.map((exp, i) => {
               const progressStyle = {
                 width: exp.progressPercentage
@@ -27,15 +26,13 @@ export default function StackProgress() {
             })}
           </div>
 
-          <div className="skills-image">
-            {illustration.animated ? (
-              <DisplayLottie animationData={Build} />
-            ) : (
-              <img
-                alt="Skills"
-                src={require("../../assets/images/skill.svg")}
-              />
-            )}
+          <div className="skills-image" aria-hidden="true">
+            <div className="signal-sat">
+              <span className="sat-body" />
+              <span className="sat-wing left" />
+              <span className="sat-wing right" />
+              <span className="sat-wave" />
+            </div>
           </div>
         </div>
       </Fade>

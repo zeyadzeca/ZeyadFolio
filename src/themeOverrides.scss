@@ -1,0 +1,274 @@
+/* Final theme layer: these rules intentionally sit above the component palette. */
+
+.space-app {
+  --page-bg: #070b18;
+  --page-surface: rgba(10, 16, 34, 0.78);
+  --page-surface-strong: #10182e;
+  --page-text: #f5f8ff;
+  --page-muted: #a9b6d4;
+  --page-border: rgba(122, 168, 255, 0.18);
+  --page-accent: #3ae0ff;
+  --page-accent-2: #7c6dff;
+  --page-shadow: rgba(0, 0, 0, 0.28);
+  background: var(--page-bg) !important;
+  color: var(--page-text);
+  min-height: 100vh;
+  transition: background 0.35s ease, color 0.35s ease;
+}
+
+.space-app.light-orbit {
+  --page-bg: #f4f7fb;
+  --page-surface: rgba(255, 255, 255, 0.9);
+  --page-surface-strong: #ffffff;
+  --page-text: #172033;
+  --page-muted: #5e6a80;
+  --page-border: rgba(23, 32, 51, 0.12);
+  --page-accent: #087f9b;
+  --page-accent-2: #5547c8;
+  --page-shadow: rgba(32, 45, 70, 0.12);
+}
+
+/* One consistent content rail. Nothing should touch the browser edges. */
+.space-layer > *:not(.space-nav) {
+  box-sizing: border-box;
+}
+
+#projects.projects-section {
+  width: min(1120px, 92%);
+  margin: 0 auto;
+  padding: 85px 0;
+  scroll-margin-top: 100px;
+}
+
+#projects.projects-section > .projects-inner {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.projects-container {
+  width: 100%;
+  max-width: 1120px;
+  margin: 32px auto 0;
+  box-sizing: border-box;
+}
+
+/* Theme-aware common text surfaces. */
+.space-app.light-orbit .section-label,
+.space-app.light-orbit .section-orbit {
+  color: var(--page-accent) !important;
+}
+
+.space-app.light-orbit h1,
+.space-app.light-orbit h2,
+.space-app.light-orbit h3,
+.space-app.light-orbit h4,
+.space-app.light-orbit h5,
+.space-app.light-orbit strong,
+.space-app.light-orbit .hero-title,
+.space-app.light-orbit .card-title,
+.space-app.light-orbit .education-heading,
+.space-app.light-orbit .experience-heading,
+.space-app.light-orbit .skills-heading,
+.space-app.light-orbit .footer-text,
+.space-app.light-orbit .header .logo,
+.space-app.light-orbit .header li a,
+.space-app.light-orbit .about-copy h2,
+.space-app.light-orbit .services-heading h2,
+.space-app.light-orbit .skills-header h2,
+.space-app.light-orbit .cta-grid h2 {
+  color: var(--page-text) !important;
+}
+
+.space-app.light-orbit p,
+.space-app.light-orbit .subTitle,
+.space-app.light-orbit .project-subtitle,
+.space-app.light-orbit .card-subtitle,
+.space-app.light-orbit .education-intro,
+.space-app.light-orbit .experience-intro,
+.space-app.light-orbit .hero-subtitle,
+.space-app.light-orbit .about-copy p,
+.space-app.light-orbit .services-heading > p,
+.space-app.light-orbit .service-card p,
+.space-app.light-orbit .skills-header > p,
+.space-app.light-orbit .cta-grid p {
+  color: var(--page-muted) !important;
+}
+
+.space-app.light-orbit .space-nav.header {
+  background: rgba(255, 255, 255, 0.88) !important;
+  border-color: var(--page-border) !important;
+  box-shadow: 0 12px 34px var(--page-shadow);
+}
+
+.space-app.light-orbit .header li a:hover,
+.space-app.light-orbit .header li a.active-nav {
+  color: var(--page-text) !important;
+  background: rgba(8, 127, 155, 0.08) !important;
+}
+
+.space-app.light-orbit .header .menu-icon .navicon,
+.space-app.light-orbit .header .menu-icon .navicon:before,
+.space-app.light-orbit .header .menu-icon .navicon:after {
+  background: var(--page-text) !important;
+}
+
+.space-app.light-orbit .project-card,
+.space-app.light-orbit .skills-panel,
+.space-app.light-orbit .service-card,
+.space-app.light-orbit .cta-inner,
+.space-app.light-orbit .hero-visual-card,
+.space-app.light-orbit .about-status {
+  background: var(--page-surface) !important;
+  border-color: var(--page-border) !important;
+  box-shadow: 0 14px 34px var(--page-shadow);
+}
+
+.space-app.light-orbit .skills-panel,
+.space-app.light-orbit .services-grid,
+.space-app.light-orbit .about-facts,
+.space-app.light-orbit .cta-topline {
+  border-color: var(--page-border) !important;
+}
+
+.space-app.light-orbit .skills-index,
+.space-app.light-orbit .about-fact {
+  border-color: var(--page-border) !important;
+}
+
+.space-app.light-orbit .software-skill-inline {
+  background: rgba(255, 255, 255, 0.96) !important;
+  color: var(--page-muted) !important;
+}
+
+.space-app.light-orbit .software-skill-inline:hover {
+  background: #edf7fa !important;
+  color: var(--page-text) !important;
+}
+
+.space-app.light-orbit .skill-orb {
+  color: var(--page-accent) !important;
+  border-color: rgba(8, 127, 155, 0.22) !important;
+  background: rgba(8, 127, 155, 0.05) !important;
+}
+
+.space-app.light-orbit .project-card-footer .project-tag {
+  background: var(--page-accent-2) !important;
+  color: #fff !important;
+}
+
+.space-app.light-orbit .cta-inner {
+  background: linear-gradient(135deg, #ffffff, #eef6fa) !important;
+}
+
+.space-app.light-orbit .cta-email,
+.space-app.light-orbit .hero-kicker,
+.space-app.light-orbit .hero-scroll,
+.space-app.light-orbit .hero-visual-label,
+.space-app.light-orbit .cta-index,
+.space-app.light-orbit .skills-index,
+.space-app.light-orbit .service-number {
+  color: var(--page-accent) !important;
+}
+
+.space-app.light-orbit .hero-title span {
+  color: var(--page-accent-2) !important;
+}
+
+.space-app.light-orbit .main-button {
+  background: linear-gradient(180deg, #5d51d6 0%, #4b3fc0 100%) !important;
+  border-color: rgba(75, 63, 192, 0.28) !important;
+  color: #fff !important;
+}
+
+.space-app.light-orbit .main-button:hover {
+  background: var(--page-accent) !important;
+  color: #fff !important;
+}
+
+.space-app.light-orbit .hero-visual {
+  border-color: var(--page-border) !important;
+}
+
+.space-app.light-orbit .code-grid {
+  opacity: 0.38;
+  background-image:
+    linear-gradient(rgba(23, 32, 51, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(23, 32, 51, 0.055) 1px, transparent 1px);
+}
+
+.space-app.light-orbit .grid-glow-one {
+  background: radial-gradient(circle, rgba(8, 127, 155, 0.10), transparent 68%);
+}
+
+.space-app.light-orbit .grid-glow-two {
+  background: radial-gradient(circle, rgba(85, 71, 200, 0.08), transparent 68%);
+}
+
+.space-app.light-orbit .background-mark {
+  color: rgba(8, 127, 155, 0.06);
+}
+
+.space-app.light-orbit .background-line {
+  background: linear-gradient(90deg, transparent, rgba(8, 127, 155, 0.14), transparent);
+}
+
+@media (max-width: 768px) {
+  #projects.projects-section {
+    width: min(92%, 1120px);
+    padding: 65px 0;
+  }
+}
+
+/* Education + experience need their own light-mode contrast. */
+.space-app.light-orbit .education-card,
+.space-app.light-orbit .experience-card,
+.space-app.light-orbit .experience-card-dark {
+  background: #ffffff !important;
+  border-color: rgba(23, 32, 51, 0.13) !important;
+  box-shadow: 0 14px 34px rgba(32, 45, 70, 0.12) !important;
+}
+
+.space-app.light-orbit .education-text-school,
+.space-app.light-orbit .education-text-subHeader,
+.space-app.light-orbit .education-text-role,
+.space-app.light-orbit .experience-text-role,
+.space-app.light-orbit .experience-text-company {
+  color: #172033 !important;
+}
+
+.space-app.light-orbit .education-text-duration,
+.space-app.light-orbit .experience-text-date {
+  color: #087f9b !important;
+}
+
+.space-app.light-orbit .education-text-desc,
+.space-app.light-orbit .education-text-bullets > ul,
+.space-app.light-orbit .education-text-bullets > ul li,
+.space-app.light-orbit .experience-text-details ul,
+.space-app.light-orbit .experience-text-details ul li,
+.space-app.light-orbit .experience-text-desc {
+  color: #5e6a80 !important;
+}
+
+.space-app.light-orbit .station-chip {
+  color: #087f9b !important;
+  background: #eaf7fa !important;
+  border-color: rgba(8, 127, 155, 0.24) !important;
+}
+
+.space-app.light-orbit .mission-badge {
+  color: #ffffff !important;
+  background: #087f9b !important;
+}
+
+.space-app.light-orbit .experience-roundedimg {
+  box-shadow: 0 0 0 4px #ffffff, 0 4px 14px rgba(32, 45, 70, 0.18) !important;
+}
+
+.space-app.light-orbit .experience-blurred_div {
+  opacity: 0.32;
+}
+
+.space-app.light-orbit .education-card-border {
+  border-top-color: rgba(85, 71, 200, 0.28) !important;
+}

@@ -17,6 +17,7 @@ export default function Podcast() {
     <Fade bottom duration={1000} distance="20px">
       <div className="main">
         <div className="podcast-header">
+          <span className="section-orbit">Audio Relay</span>
           <h1 className="podcast-header-title">{podcastSection.title}</h1>
           <p
             className={

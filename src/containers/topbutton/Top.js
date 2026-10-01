@@ -25,8 +25,13 @@ export default function Top() {
   }; //To make sure that this button is not visible at starting.
   // When the user clicks on the button, scroll to the top of the document
   return (
-    <button onClick={TopEvent} id="topButton" title="Go to top">
-      <i className="fas fa-hand-point-up" aria-hidden="true"></i>
+    <button
+      onClick={TopEvent}
+      id="topButton"
+      title="Return to Space Base"
+      aria-label="Return to Space Base"
+    >
+      <i className="fas fa-rocket" aria-hidden="true"></i>
     </button>
   );
 }

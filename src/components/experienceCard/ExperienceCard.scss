@@ -1,273 +1,166 @@
 @import "../../_globalColor";
 
-/* =========================
-   Experience Card
-========================= */
-
 .experience-card,
 .experience-card-dark {
   position: relative;
-  background: rgba(8, 8, 35, 0.72) !important;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: 18px;
-  border: 1px solid rgba(80, 210, 255, 0.45);
-  /* Allow the logo to overlap without being cut */
-  overflow: visible;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  background: rgba(12, 18, 42, 0.72);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.28);
+  border-radius: 22px;
+  border: 1px solid rgba(122, 168, 255, 0.22);
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-
-/* =========================
-   Hover
-========================= */
 
 .experience-card:hover,
 .experience-card-dark:hover {
-  transform: translateY(-8px);
-  border-color: rgba(80, 220, 255, 0.9);
-  box-shadow: 0 0 25px rgba(80, 210, 255, 0.18), 0 20px 40px rgba(0, 0, 0, 0.35);
+  transform: translateY(-4px);
+  box-shadow: 0 18px 36px rgba(91, 77, 255, 0.25);
 }
 
-/* =========================
-   Experience Banner
-========================= */
+.mission-trail {
+  position: absolute;
+  z-index: 2;
+  top: 22px;
+  right: 16px;
+  width: 72px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, $accentCyan);
+}
+
+.mission-trail::after {
+  content: "";
+  position: absolute;
+  right: -6px;
+  top: -4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: $accentPink;
+  box-shadow: 0 0 10px $accentPink;
+}
+
+.mission-badge {
+  position: absolute;
+  z-index: 2;
+  top: 12px;
+  left: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #081018;
+  background: $accentCyan;
+}
 
 .experience-banner {
-  position: relative;
+  background: $experienceCardBannerLG;
+  border-radius: 22px 22px 0 0;
   height: 11rem;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-radius: 18px 18px 0 0;
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  /* Important: prevents the logo from being clipped */
-  overflow: visible;
 }
-
-/* =========================
-   Dark Overlay
-========================= */
 
 .experience-blurred_div {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(8, 12, 45, 0.48);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border-radius: 18px 18px 0 0;
-  z-index: 1;
-}
-
-/* =========================
-   Company Name
-========================= */
-
-.experience-div-company {
-  position: absolute;
+  background: $experienceCardBlurredDivLG;
+  filter: blur(5px);
+  height: 11rem;
   top: 0;
   left: 0;
   width: 100%;
+  border-radius: 22px 22px 0 0;
+}
+
+.experience-div-company {
+  position: absolute;
+  background: transparent;
   height: 9rem;
+  top: 0;
+  left: 0;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2;
 }
 
 .experience-text-company {
-  color: white !important;
-  font-size: 25px;
-  font-weight: 700;
   text-align: center;
   padding: 1.5rem;
   margin: 0;
+  color: $lightBackground1;
+  font-size: 1.4rem;
+  font-weight: 700;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
-
-/* =========================
-   Company Logo
-========================= */
 
 .experience-roundedimg {
   position: absolute;
-  left: 50%;
+  object-fit: cover;
+  left: 0;
+  right: 0;
   top: 7rem;
-  transform: translateX(-50%);
-  width: 8rem;
-  height: 8rem;
-  /*
-      contain ensures the complete logo
-      is visible without cropping
-    */
-  object-fit: contain;
+  margin-left: auto;
+  margin-right: auto;
+  width: 7.2rem;
+  height: 7.2rem;
+  box-shadow: 0 0 0 4px rgba(10, 16, 36, 0.8);
   border-radius: 50%;
-  border: 3px solid rgba(255, 255, 255, 0.85);
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.45);
-  z-index: 10;
-  background: white;
 }
-
-/* =========================
-   Experience Details
-========================= */
-
-.experience-text-details {
-  position: relative;
-  /*
-      Extra top space for the
-      overlapping company logo
-    */
-  padding: 1.8rem 1.5rem 1.5rem;
-  margin-top: 4rem;
-  z-index: 2;
-}
-
-/* =========================
-   Role
-========================= */
 
 .experience-text-role {
   text-align: center;
-  color: white !important;
+  color: $textColorDark;
   font-weight: 700;
-  font-size: 23px;
-  margin: 0;
-  padding-top: 1rem;
-  line-height: 1.35;
+  font-size: 1.4rem;
+  margin: 0px;
+  padding-top: 1.5rem;
+  line-height: normal;
 }
 
-/* =========================
-   Date
-========================= */
+.dark-mode-text {
+  color: $textColorDark !important;
+}
 
 .experience-text-date {
   text-align: center;
-  color: rgba(80, 210, 255, 0.9) !important;
-  font-size: 17px;
-  font-weight: 600;
-  margin: 0;
+  color: $accentCyan;
+  font-size: 1rem;
+  margin: 0px;
   padding-top: 0.7rem;
+  font-weight: 600;
 }
-
-/* =========================
-   Description
-========================= */
 
 .experience-text-desc {
-  color: rgba(255, 255, 255, 0.78) !important;
-  text-align: left;
-  font-size: 16px;
-  line-height: 1.7;
-  margin-top: 1rem;
+  text-align: center;
 }
 
-/* =========================
-   Bullet Points
-========================= */
+.experience-text-details {
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
 
 .experience-text-details ul {
-  padding-left: 1.2rem;
-  margin-top: 1rem;
+  color: $subTitle;
 }
-
-.experience-text-details li {
-  color: rgba(255, 255, 255, 0.75) !important;
-  font-size: 15px;
-  line-height: 1.6;
-  margin-bottom: 8px;
-}
-
-/* =========================
-   Light / Dark Cards
-========================= */
-
-.experience-card {
-  background: rgba(10, 8, 40, 0.68) !important;
-}
-
-.experience-card-dark {
-  background: rgba(3, 8, 30, 0.78) !important;
-}
-
-/* =========================
-   Responsive - Large Screens
-========================= */
 
 @media (max-width: 1380px) {
   .experience-text-role {
     padding-top: 0.5rem;
-    font-size: 22px;
+    font-size: 1.2rem;
   }
-
-  .experience-text-company {
-    font-size: 22px;
-  }
-
-  .experience-text-date {
-    font-size: 18px;
-  }
-
   .experience-roundedimg {
     width: 6.5rem;
     height: 6.5rem;
-    /* Keeps logo correctly positioned */
-    top: 7.5rem;
-  }
-
-  .experience-text-details {
-    margin-top: 3.5rem;
   }
 }
 
-/* =========================
-   Responsive - Tablets/Mobile
-========================= */
-
-@media (max-width: 768px) {
-  .experience-banner {
-    height: 10rem;
-  }
-
-  .experience-roundedimg {
-    width: 6rem;
-    height: 6rem;
-    top: 6.5rem;
-  }
-
-  .experience-text-details {
-    margin-top: 3rem;
-    padding-left: 1.2rem;
-    padding-right: 1.2rem;
-  }
-
-  .experience-text-role {
-    font-size: 21px;
-  }
-
-  .experience-text-company {
-    font-size: 21px;
-    white-space: normal;
-    overflow: visible;
-    line-height: 1.25;
-  }
-
-  .experience-text-date {
-    font-size: 17px;
-  }
-
-  .experience-text-desc {
-    font-size: 15px;
-  }
-
-  .experience-text-details li {
-    font-size: 14px;
+@media (prefers-reduced-motion: reduce) {
+  .experience-card:hover,
+  .experience-card-dark:hover {
+    transform: none;
   }
 }

@@ -1,70 +1,84 @@
 @import "../../_globalColor";
 
 .education-card {
+  position: relative;
   display: flex;
   flex-direction: row;
+  padding: 42px 18px 18px;
+  margin-bottom: 18px;
+  background: rgba(12, 18, 42, 0.62);
+  border: 1px solid rgba(122, 168, 255, 0.2);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.station-chip {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $accentCyan;
+  border: 1px solid rgba(58, 224, 255, 0.35);
+  background: rgba(8, 16, 36, 0.75);
+}
+
+.orbit-dot.knowledge {
+  background: radial-gradient(circle at 30% 30%, #fff4c2, #7c6dff);
+}
+
+.education-card:hover {
+  box-shadow: 0 0 22px rgba(124, 109, 255, 0.2);
 }
 
 .education-card:hover + .education-card-border {
   border-color: $educationCardBorder;
   width: 100%;
-  -webkit-transition: width 0.6s ease-in-out;
-  -moz-transition: width 0.6s ease-in-out;
-  -o-transition: width 0.6s ease-in-out;
   transition: width 0.6s ease-in-out;
 }
 
 .education-card-border {
-  height: 30px;
+  height: 18px;
   width: 80%;
-  border-top: 2px solid $lightBorder1;
-  margin-bottom: 20px;
-  -webkit-transition: width 0.6s ease-in-out;
-  -moz-transition: width 0.6s ease-in-out;
-  -o-transition: width 0.6s ease-in-out;
-  transition: width 0.6s ease-in-out;
-}
-
-.education-head {
-  display: flex;
-  flex-direction: row;
+  border-top: 2px dashed rgba(58, 224, 255, 0.35);
+  margin-bottom: 12px;
 }
 
 .education-text-school {
   margin: 0;
-  font-size: 28px;
+  font-size: 1.5rem;
   font-weight: 700;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  height: 27px;
+  color: $textColorDark;
 }
 
 .education-roundedimg {
   object-fit: cover;
-  margin-right: 2rem;
-  width: 6rem;
-  height: 6rem;
-  box-shadow: 0 0.5rem 1rem $lightBoxShadowDarker;
+  margin-right: 1.5rem;
+  width: 5.5rem;
+  height: 5.5rem;
+  box-shadow: 0 0 0 3px rgba(58, 224, 255, 0.3);
   border-radius: 50%;
 }
 
 .education-card-right {
-  max-width: 70%;
+  max-width: 78%;
 }
 
 .education-text-subHeader {
-  color: $textColor;
+  color: $textColorDark;
   font-weight: 700;
-  font-size: 19px;
+  font-size: 1.05rem;
   margin: 0px;
   padding-top: 0.8rem;
   line-height: normal;
 }
 
 .education-text-duration {
-  color: $titleColor;
-  font-size: 19px;
+  color: $accentCyan;
+  font-size: 0.95rem;
   margin: 0px;
   padding-top: 0.5rem;
 }
@@ -72,35 +86,25 @@
 .education-text-desc {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
+  color: $cardSubtitle;
 }
 
 .education-text-bullets > ul {
   margin-top: 0.5rem;
+  color: $subTitle;
 }
-
-/* Media Query */
 
 @media (max-width: 1380px) {
   .education-card {
     flex-direction: column;
-    padding-bottom: 10px;
   }
   .education-card-right {
-    max-width: 90%;
-  }
-  .education-card-border {
-    width: 90%;
-  }
-  .education-text-subHeader {
-    padding-top: 0.5rem;
-    font-size: 16px;
+    max-width: 100%;
   }
   .education-text-school {
-    font-size: 20px;
-    height: 23px;
-  }
-  .education-text-duration {
-    font-size: 16px;
+    font-size: 1.2rem;
+    white-space: normal;
+    height: auto;
   }
   .education-roundedimg {
     width: 4rem;
@@ -114,21 +118,9 @@
   .education-card {
     text-align: center;
   }
-  .education-card-right {
-    max-width: 100%;
-  }
-  .education-card-border {
-    width: 100%;
-  }
-  .education-roundedimg {
-    margin-top: 10px;
-    width: 4rem;
-    height: 4rem;
-    margin-bottom: 1rem;
-    margin-right: 0;
-  }
   .education-text-bullets > ul {
-    max-width: 80%;
+    max-width: 90%;
     margin: auto;
+    text-align: left;
   }
 }

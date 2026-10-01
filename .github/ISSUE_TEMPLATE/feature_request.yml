@@ -1,5 +1,5 @@
 name: 💡 Feature request
-description: Got a suggestion for a new idea/feature ?
+description: Suggest an improvement to the ZNteam portfolio template.
 labels: ["enhancement"]
 body:
   - type: textarea

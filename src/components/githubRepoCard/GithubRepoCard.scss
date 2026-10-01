@@ -1,29 +1,52 @@
 @import "../../_globalColor";
 
 .repo-card-div {
+  position: relative;
   color: $githubRepoCardColor;
-  background-color: $lightBackground2;
-  box-shadow: $lightBoxShadowDark 0px 10px 30px -15px;
-  padding: 2rem;
+  background: rgba(12, 18, 42, 0.72);
+  border: 1px solid rgba(122, 168, 255, 0.22);
+  border-radius: 22px;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.25);
+  padding: 1.6rem;
   cursor: pointer;
-  -webkit-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
-  transition: all 0.3s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
+
+.repo-card-div::after {
+  content: "";
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #fff, $accentCyan);
+}
+
+.repo-tech {
+  display: inline-block;
+  margin: 0 0 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: $accentCyan;
+  border: 1px solid rgba(58, 224, 255, 0.35);
+}
+
 .repo-card-div:hover {
-  box-shadow: $lightBoxShadowDark 0px 20px 30px -10px;
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: 0 0 24px rgba(58, 224, 255, 0.18);
 }
 
 .repo-stats {
   display: flex;
-  -webkit-box-pack: justify;
   justify-content: space-between;
   font-size: 13px;
   color: $githubRepoCardRepoCardStatsColor;
 }
 
 .repo-left-stat {
-  -webkit-box-flex: 1;
   flex-grow: 1;
   display: flex;
 }
@@ -38,7 +61,6 @@
 
 .repo-left-stat span {
   display: flex;
-  -webkit-box-align: center;
   align-items: center;
   margin-right: 0.75rem;
 }
@@ -57,13 +79,10 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   color: $githubRepoCardRepoNameColor;
-  margin-bottom: 0.75rem;
-  font-size: 25px;
+  font-size: 1.3rem;
   font-weight: 700;
-  letter-spacing: -0.5px;
   overflow: hidden;
-  margin: 0px;
-  height: 30px;
+  margin: 0;
 }
 
 .repo-star-svg {
@@ -78,9 +97,10 @@
 }
 
 .dark-card-mode {
-  background-color: $darkBackground;
+  background: rgba(12, 18, 42, 0.72);
   color: $textColorDark;
 }
+
 .dark-card-mode p {
   color: $textColorDark;
 }
@@ -90,6 +110,11 @@
 }
 
 .dark-card-mode:hover {
-  background-color: $buttonColor !important;
-  box-shadow: 0px 0px 16px $darkBoxShadow;
+  background-color: rgba(91, 77, 255, 0.22) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .repo-card-div:hover {
+    transform: none;
+  }
 }

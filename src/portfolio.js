@@ -1,21 +1,22 @@
+/* Personal portfolio configuration. */
+
 import emoji from "react-easy-emoji";
 import splashAnimation from "./assets/lottie/splashAnimation";
+
+const illustration = {animated: true};
+
 
 const splashScreen = {
   enabled: true,
   animation: splashAnimation,
-  duration: 2000
-};
-
-const illustration = {
-  animated: true
+  duration: 1500
 };
 
 const greeting = {
   username: "Zeyad Elmr3shly",
-  title: "Hi all, I'm Zeyad",
+  title: "I build systems that solve real problems.",
   subTitle: emoji(
-    "I’m a passionate Full Stack Developer focused on turning business ideas into reliable, scalable digital solutions. I build full-stack web applications, robust backend APIs, and data-driven systems using modern technologies such as .NET, Node.js, React, and SQL. What sets me apart is my ability to go beyond building the system ,I can also transform its data into meaningful insights through analytics and interactive Power BI dashboards, helping businesses not only operate digitally, but understand and grow their business."
+    "Full Stack Developer focused on backend engineering, scalable APIs, data-driven applications, and clean user experiences using .NET, Node.js, React, SQL, and modern web technologies."
   ),
   resumeLink:
     "https://drive.google.com/file/d/18w5AvGYRSM04T80p318KohqFPcC48Z9S/view?usp=drivesdk",
@@ -29,72 +30,70 @@ const socialMediaLinks = {
   display: true
 };
 
-const skillsSection = {
-  title: "What I do",
-  subTitle:
-    "FULL STACK DEVELOPER FOCUSED ON BACKEND SYSTEMS, WEB APPLICATIONS, AND DATA-DRIVEN SOLUTIONS",
-  skills: [
-    emoji(
-      "⚡ Develop highly interactive Front end / User Interfaces for your web applications "
-    ),
-    emoji(
-      "⚡Design and develop RESTful APIs with authentication and authorization "
-    ),
-    emoji(
-      "⚡ Turn business data into interactive Power BI dashboards and useful insights"
-    ),
-    emoji(
-      "⚡ Work with SQL and NoSQL databases to build reliable data-driven applications"
-    )
+const aboutSection = {
+  display: true,
+  eyebrow: "About me",
+  title: "Backend-minded. Full-stack capable.",
+  image: require("./assets/images/Zeyad.jpg"),
+  paragraphs: [
+    "I’m a Computer Science student and Full Stack Developer who enjoys turning business requirements into reliable software. My strongest interest is backend engineering, where I design APIs, authentication flows, database structures, and the logic that keeps applications dependable.",
+    "I also care about the product beyond the API. I build responsive React interfaces, work with SQL and NoSQL databases, and use analytics and Power BI to turn operational data into useful insights."
   ],
+  facts: [
+    {label: "Focus", value: "Backend & APIs"},
+    {label: "Stack", value: ".NET · Node.js · React"},
+    {label: "Data", value: "SQL · Power BI"}
+  ]
+};
 
-  softwareSkills: [
+const servicesSection = {
+  display: true,
+  eyebrow: "What I build",
+  title: "From idea to working product.",
+  subtitle:
+    "I combine backend engineering, full-stack development, and data thinking to build products that are useful, maintainable, and ready to grow.",
+  services: [
     {
-      skillName: "html-5",
-      fontAwesomeClassname: "fab fa-html5"
+      number: "01",
+      title: "Backend & APIs",
+      text: "RESTful APIs, authentication, authorization, business logic, validation, and integrations using .NET, Node.js, Express, and NestJS."
     },
     {
-      skillName: "css3",
-      fontAwesomeClassname: "fab fa-css3-alt"
+      number: "02",
+      title: "Full-Stack Applications",
+      text: "End-to-end web applications with React, modern frontend patterns, backend services, and database-driven workflows."
     },
     {
-      skillName: "sass",
-      fontAwesomeClassname: "fab fa-sass"
+      number: "03",
+      title: "Data & BI",
+      text: "Data cleaning, SQL analysis, Power BI dashboards, and reporting workflows that turn raw business data into clear decisions."
     },
     {
-      skillName: ".NET",
-      fontAwesomeClassname: "fas fa-server"
-    },
-    {
-      skillName: "JavaScript",
-      fontAwesomeClassname: "fab fa-js"
-    },
-    {
-      skillName: "reactjs",
-      fontAwesomeClassname: "fab fa-react"
-    },
-    {
-      skillName: "nodejs",
-      fontAwesomeClassname: "fab fa-node"
-    },
-
-    {
-      skillName: "npm",
-      fontAwesomeClassname: "fab fa-npm"
-    },
-    {
-      skillName: "sql-database",
-      fontAwesomeClassname: "fas fa-database"
-    },
-
-    {
-      skillName: "python",
-      fontAwesomeClassname: "fab fa-python"
-    },
-    {
-      skillName: "docker",
-      fontAwesomeClassname: "fab fa-docker"
+      number: "04",
+      title: "System Integration",
+      text: "Connect services, databases, notifications, reports, and third-party tools into one coherent application workflow."
     }
+  ]
+};
+
+const skillsSection = {
+  title: "Technical Skills",
+  subTitle:
+    "A practical toolkit across backend engineering, frontend development, databases, and data.",
+  skills: [],
+  softwareSkills: [
+    {skillName: "C# / .NET", fontAwesomeClassname: "fas fa-code"},
+    {skillName: "Node.js", fontAwesomeClassname: "fab fa-node"},
+    {skillName: "JavaScript", fontAwesomeClassname: "fab fa-js"},
+    {skillName: "React", fontAwesomeClassname: "fab fa-react"},
+    {skillName: "HTML5", fontAwesomeClassname: "fab fa-html5"},
+    {skillName: "CSS3", fontAwesomeClassname: "fab fa-css3-alt"},
+    {skillName: "SQL Server", fontAwesomeClassname: "fas fa-database"},
+    {skillName: "MongoDB", fontAwesomeClassname: "fas fa-leaf"},
+    {skillName: "Python", fontAwesomeClassname: "fab fa-python"},
+    {skillName: "Git", fontAwesomeClassname: "fab fa-git-alt"},
+    {skillName: "Docker", fontAwesomeClassname: "fab fa-docker"},
+    {skillName: "Power BI", fontAwesomeClassname: "fas fa-chart-bar"}
   ],
   display: true
 };
@@ -105,34 +104,20 @@ const educationInfo = {
     {
       schoolName: "Ain Shams University",
       logo: require("./assets/images/AinShamsLogo.png"),
-      subHeader: "Master of Science in Computer Science",
-      duration: "September 2023 - April 2027",
-      desc: "Ranked top 4% in the Operating System Course. Took courses about Software Engineering, Data Security, Operating Systems, algorithms, databases, and computer Architecture.",
+      subHeader: "B.Sc. in Computer Science",
+      duration: "September 2023 - July 2027",
+      desc: "Coursework across software engineering, data security, operating systems, algorithms, databases, computer architecture, and full-stack development.",
       descBullets: [
         "GPA: 3.45",
-        "Developing practical experience in more than 10 projects through full-stack, backend, data analysis, and software engineering courses."
+        "Built practical experience through 10+ software, backend, data, and systems projects."
       ]
     }
   ]
 };
 
 const techStack = {
-  viewSkillBars: true,
-  experience: [
-    {
-      Stack: "Backend",
-      progressPercentage: "90%"
-    },
-    {
-      Stack: "Programming",
-      progressPercentage: "70%"
-    },
-    {
-      Stack: "Frontend/Design",
-      progressPercentage: "60%"
-    }
-  ],
-  displayCodersrank: false
+  viewSkillBars: false,
+  experience: []
 };
 
 const workExperiences = {
@@ -143,10 +128,10 @@ const workExperiences = {
       company: "DEPI (Digital Egypt Pioneers Initiative)",
       companylogo: require("./assets/images/DEPI logo.png"),
       date: "July 2026 – March 2027",
-      desc: "Accepted into DEPI's competitive Full Stack .NET Web Development track, a national technical training initiative.",
+      desc: "Accepted into DEPI's Full Stack .NET Web Development track, with hands-on training in modern frontend and backend development.",
       descBullets: [
-        "Building full-stack web applications through hands-on frontend and backend training using .NET and modern web development practices.",
-        "Collaborating with peers on real-world development tasks, applying Git-based version control and adapting to new tools and workflows."
+        "Building full-stack applications with .NET and modern web development practices.",
+        "Collaborating on practical development tasks using Git-based workflows and team collaboration."
       ]
     },
     {
@@ -154,14 +139,14 @@ const workExperiences = {
       company: "ITI (Information Technology Institute)",
       companylogo: require("./assets/images/itilogo.png"),
       date: "July 2026 - August 2026",
-      desc: "Training in backend development with Node.js, building hands-on experience with each new module through applied work. Working with Express.js and NestJS to build and structure RESTful APIs, alongside advanced JavaScript beyond core fundamentals."
+      desc: "Hands-on backend development training with Node.js, Express.js, and NestJS, focused on building and structuring RESTful APIs."
     },
     {
       role: "Data Analysis Trainee",
       company: "Oil & Gas Solutions Company",
       companylogo: require("./assets/images/oil&gasLogo.png"),
       date: "August 2025 – September 2025",
-      desc: "Performed data cleaning, preprocessing, and analysis on company databases, communicating findings clearly to support decision-making."
+      desc: "Performed data cleaning, preprocessing, and analysis on company databases and communicated findings to support decision-making."
     }
   ]
 };
@@ -172,35 +157,17 @@ const openSource = {
 };
 
 const bigProjects = {
-  title: "Big Projects",
-  subtitle: "Real-world ideas, transformed into functional digital solutions",
+  title: "Selected Projects",
+  subtitle:
+    "A few systems I built to practice real product workflows, backend architecture, and full-stack delivery.",
   projects: [
-    {
-      image: require("./assets/images/EduCourse.jpeg"),
-      projectName: "EduCourse",
-      projectDesc:
-        "EduCourse simulates real-world educational systems such as Udemy and Coursera by providing complete learning workflows for students, instructors, and administrators.",
-      footerLink: [
-        {
-          name: "GitHub",
-          url: "https://github.com/zeyadzeca/CourseManagmentSystem"
-        },
-        {
-          name: "Demo",
-          url: "https://drive.google.com/file/d/1xsK30XJJ-RmeBCgJvmQpJsD4YLIwptkB/view?usp=sharing"
-        }
-      ]
-    },
     {
       image: require("./assets/images/Corsiq.jpeg"),
       projectName: "Coursiq",
       projectDesc:
-        "A full-stack academic course management platform built with React, Node.js, Express, and SQL Server. The system includes secure JWT authentication and role-based authorization, course enrollment, prerequisite validation, curriculum management, grade tracking, GPA calculation, automated PDF and Excel reports, and email notifications.",
+        "A full-stack academic course management platform built with React, Node.js, Express, and SQL Server, featuring JWT authentication, role-based authorization, prerequisite validation, curriculum management, GPA calculation, PDF/Excel reports, and email notifications.",
       footerLink: [
-        {
-          name: "GitHub",
-          url: "https://github.com/nadaali0/Coursiq-"
-        },
+        {name: "GitHub", url: "https://github.com/nadaali0/Coursiq-"},
         {
           name: "Demo",
           url: "https://drive.google.com/file/d/1CfJorlQ1kUnh2ESuRHsgqJ3Gc5Fd5WG0/view?usp=sharing"
@@ -208,31 +175,32 @@ const bigProjects = {
       ]
     },
     {
+      image: require("./assets/images/EduCourse.jpeg"),
+      projectName: "EduCourse",
+      projectDesc:
+        "A learning platform that models real-world education workflows for students, instructors, and administrators, with course management and enrollment functionality.",
+      footerLink: [
+        {name: "GitHub", url: "https://github.com/zeyadzeca/CourseManagmentSystem"},
+        {
+          name: "Demo",
+          url: "https://drive.google.com/file/d/1xsK30XJJ-RmeBCgJvmQpJsD4YLIwptkB/view?usp=sharing"
+        }
+      ]
+    },
+    {
       image: require("./assets/images/WorkFlow.jpeg"),
       projectName: "Task Workflow",
       projectDesc:
-        "A full-stack workflow management system designed to organize tasks and business processes, manage requests and status changes, and provide users with a structured way to monitor and complete ongoing workflows.",
-      footerLink: [
-        {
-          name: "GitHub",
-          url: "https://github.com/zeyadzeca/WorkFlowHub"
-        }
-      ]
+        "A workflow management system for organizing tasks, requests, status changes, and business processes in a structured application flow.",
+      footerLink: [{name: "GitHub", url: "https://github.com/zeyadzeca/WorkFlowHub"}]
     },
     {
       image: require("./assets/images/FullStackFolio.png"),
       projectName: "FullStackFolio",
       projectDesc:
-        "A modern, clean, responsive, and customizable portfolio template built by ZNteam.This project helps developers and professionals create their own personal portfolio websites quickly and easily.Clone it, update the configuration, and publish a site that presents your skills, experience, projects, and professional presence.",
+        "A responsive developer portfolio system customized into a personal professional site with a stronger information architecture, project storytelling, and conversion-focused sections.",
       footerLink: [
-        {
-          name: "GitHub",
-          url: "https://github.com/zeyadzeca/FullStackFolio"
-        },
-        {
-          name: "Demo",
-          url: "https://drive.google.com/file/d/1Xy0uNAhjmVPVa4SfVy4HfkI--IX79oZv/view?usp=sharing"
-        }
+        {name: "GitHub", url: "https://github.com/zeyadzeca/FullStackFolio"}
       ]
     }
   ],
@@ -240,61 +208,58 @@ const bigProjects = {
 };
 
 const achievementSection = {
-  title: emoji("Achievements And Certifications 🏆 "),
-  subtitle: "Certifications, awards, and other professional milestones.",
+  title: emoji("Achievements & Certifications 🏆"),
+  subtitle: "Selected professional milestones.",
   achievementsCards: [],
   display: false
 };
 
 const blogSection = {
-  title: "Blogs",
-  subtitle:
-    "Notes on software engineering, backend systems, and building useful products.",
+  title: "Writing",
+  subtitle: "Notes on backend engineering, software design, and data.",
   displayMediumBlogs: "false",
   blogs: [],
   display: false
 };
 
 const talkSection = {
-  title: "TALKS",
-  subtitle: emoji("Talks and technical sessions"),
+  title: "Talks",
+  subtitle: "Technical sessions and discussions.",
   talks: [],
   display: false
 };
 
 const podcastSection = {
-  title: emoji("Podcast 🎙️"),
-  subtitle: "Conversations about software and technology",
+  title: "Podcast",
+  subtitle: "Conversations about software and technology.",
   podcast: [],
   display: false
 };
 
 const resumeSection = {
   title: "Resume",
-  subtitle: "Feel free to download my resume",
+  subtitle: "View my experience, education, and technical background.",
   display: true
 };
 
 const contactInfo = {
-  title: emoji("Contact Me ☎️"),
+  title: emoji("Let’s build something useful."),
   subtitle:
-    "Open to opportunities, collaborations, and technical discussions. My inbox is always available.",
+    "Open to internships, junior backend/full-stack opportunities, collaborations, and technical discussions.",
   number: "+20-1551601584",
   email_address: "zeyadzozakm@gmail.com"
 };
 
-const twitterDetails = {
-  userName: "",
-  display: false
-};
-
+const twitterDetails = {userName: "", display: false};
 const isHireable = false;
 
 export {
+  aboutSection,
   illustration,
   greeting,
   socialMediaLinks,
   splashScreen,
+  servicesSection,
   skillsSection,
   educationInfo,
   techStack,
@@ -310,3 +275,4 @@ export {
   isHireable,
   resumeSection
 };
+

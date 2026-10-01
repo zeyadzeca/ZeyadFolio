@@ -1,11 +1,9 @@
-import React, {Suspense, useContext} from "react";
+import React, {useContext} from "react";
 import "./twitter.scss";
-import Loading from "../loading/Loading";
 import {TwitterTimelineEmbed} from "react-twitter-embed";
 import {twitterDetails} from "../../portfolio";
 import StyleContext from "../../contexts/StyleContext";
 
-const renderLoader = () => <Loading />;
 const cantDisplayError =
   "<div className='centerContent'><h2>Can't load? Check privacy protection settings</h2></div>";
 
@@ -29,24 +27,23 @@ export default function Twitter() {
   }
   if (twitterDetails.userName) {
     return (
-      <Suspense fallback={renderLoader()}>
-        <div className="tw-main-div" id="twitter">
-          <div className="centerContent">
-            <TwitterTimelineEmbed
-              sourceType="profile"
-              screenName={twitterDetails.userName}
-              options={{height: 400, width: {widthScreen}}}
-              placeholder={renderLoader()}
-              autoHeight={false}
-              borderColor="#fff"
-              key={isDark ? "1" : "2"}
-              theme={isDark ? "dark" : "light"}
-              noFooter={true}
-              onload={timeOut()}
-            />
-          </div>
+      <div className="tw-main-div" id="twitter">
+        <span className="section-orbit">Comms Feed</span>
+        <div className="centerContent">
+          <TwitterTimelineEmbed
+            sourceType="profile"
+            screenName={twitterDetails.userName}
+            options={{height: 400, width: {widthScreen}}}
+            placeholder={null}
+            autoHeight={false}
+            borderColor="#fff"
+            key={isDark ? "1" : "2"}
+            theme={isDark ? "dark" : "light"}
+            noFooter={true}
+            onload={timeOut()}
+          />
         </div>
-      </Suspense>
+      </div>
     );
   } else {
     return null;

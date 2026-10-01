@@ -2,19 +2,13 @@ import React, {useState, createRef} from "react";
 import "./ExperienceCard.scss";
 import ColorThief from "colorthief";
 
-export default function ExperienceCard({cardInfo, isDark}) {
+export default function ExperienceCard({cardInfo, isDark, missionIndex}) {
   const [colorArrays, setColorArrays] = useState([]);
   const imgRef = createRef();
 
   function getColorArrays() {
-    try {
-      const colorThief = new ColorThief();
-      if (imgRef.current) {
-        setColorArrays(colorThief.getColor(imgRef.current));
-      }
-    } catch (error) {
-      console.warn("Could not extract company logo color", error);
-    }
+    const colorThief = new ColorThief();
+    setColorArrays(colorThief.getColor(imgRef.current));
   }
 
   function rgb(values) {
@@ -36,8 +30,12 @@ export default function ExperienceCard({cardInfo, isDark}) {
       : null;
   };
 
+  const missionLabel = String(missionIndex || 1).padStart(2, "0");
+
   return (
-    <div className={isDark ? "experience-card-dark" : "experience-card"}>
+    <article className={isDark ? "experience-card-dark" : "experience-card"}>
+      <span className="mission-trail" aria-hidden="true" />
+      <div className="mission-badge">Mission {missionLabel}</div>
       <div style={{background: rgb(colorArrays)}} className="experience-banner">
         <div className="experience-blurred_div"></div>
         <div className="experience-div-company">
@@ -85,6 +83,6 @@ export default function ExperienceCard({cardInfo, isDark}) {
           <GetDescBullets descBullets={cardInfo.descBullets} isDark={isDark} />
         </ul>
       </div>
-    </div>
+    </article>
   );
 }
